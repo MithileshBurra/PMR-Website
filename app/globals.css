@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-sriher-navy: #06273D;
+  --color-sriher-blue: #003F7C;
+  --color-sriher-crimson: #BF2228;
+  --color-sriher-gold: #D4AF37;
+  --color-surface-bg: #F8FAFC;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-surface-bg);
+  color: #0F172A;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-editorial {
+  font-family: 'Bitter', Georgia, serif;
+}
+
+.font-technical {
+  font-family: 'Inter', sans-serif;
+}
+
+/* SRIHER Crimson Gradient Accents */
+.crimson-gradient-text {
+  background: linear-gradient(135deg, #BF2228 0%, #DD3333 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.navy-gradient-bg {
+  background: linear-gradient(135deg, #06273D 0%, #003F7C 100%);
+}
+
+.crimson-gradient-bg {
+  background: linear-gradient(135deg, #BF2228 0%, #991B1F 100%);
+}
+
+/* Glassmorphism Styles */
+.glass-panel-sriher {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 63, 124, 0.1);
+}
+
+.glass-panel-dark-sriher {
+  background: rgba(6, 39, 61, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8FAFC;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #003F7C;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #BF2228;
+}
