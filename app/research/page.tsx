@@ -3,7 +3,7 @@ import { FlaskConical, BookOpen, ShieldCheck, Award } from "lucide-react";
 
 export default function ResearchPage() {
   return (
-    <div className="py-16 bg-surface-light min-h-screen text-charcoal">
+    <div className="py-16 bg-transparent min-h-screen text-charcoal">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <div className="mb-8">
           <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">

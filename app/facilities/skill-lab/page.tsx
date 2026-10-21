@@ -14,7 +14,7 @@ import {
 
 export default function SkillLabPage() {
   return (
-    <div className="py-16 bg-slate-50 min-h-screen text-slate-800 font-technical">
+    <div className="py-16 bg-transparent min-h-screen text-slate-800 font-technical">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         {/* Breadcrumb & Header */}
         <div className="mb-10">
@@ -70,19 +70,19 @@ export default function SkillLabPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-semibold text-slate-700 font-technical">
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center gap-3">
+            <div className="p-4 rounded-2xl bg-transparent border border-slate-200/80 flex items-center gap-3">
               <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0" />
               <span>Structured Skill Assessment & Debriefing Rooms with Video Audio Capture</span>
             </div>
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center gap-3">
+            <div className="p-4 rounded-2xl bg-transparent border border-slate-200/80 flex items-center gap-3">
               <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0" />
               <span>Dedicated Training Workshops for Basic Life Support (AHA Certified)</span>
             </div>
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center gap-3">
+            <div className="p-4 rounded-2xl bg-transparent border border-slate-200/80 flex items-center gap-3">
               <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0" />
               <span>Sterile Operative Technique & Scrubbing Protocol Stations</span>
             </div>
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center gap-3">
+            <div className="p-4 rounded-2xl bg-transparent border border-slate-200/80 flex items-center gap-3">
               <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0" />
               <span>Trauma Resuscitation (ATLS) Simulation Protocols</span>
             </div>

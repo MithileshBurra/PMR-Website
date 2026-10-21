@@ -124,7 +124,7 @@ export default function Navbar() {
                   <div className="text-xs font-bold text-blue-600 uppercase tracking-wider mb-1">
                     Institutional Governance
                   </div>
-                  <Link href="#executive-leadership" className="p-2.5 rounded-xl hover:bg-blue-50 hover:text-blue-600 text-sm font-medium transition-all flex items-center justify-between">
+                  <Link href="/executive-leadership" className="p-2.5 rounded-xl hover:bg-blue-50 hover:text-blue-600 text-sm font-medium transition-all flex items-center justify-between">
                     <span>Executive Leadership</span> <ChevronRight className="w-4 h-4 text-slate-400" />
                   </Link>
                 </div>
@@ -509,7 +509,7 @@ export default function Navbar() {
         {mobileMenuOpen && (
           <div className="xl:hidden bg-white border-t border-slate-100 px-6 py-6 text-slate-800 flex flex-col gap-3 animate-in slide-in-from-top duration-300">
             <Link href="/" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 font-semibold">Home</Link>
-            <Link href="#executive-leadership" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 font-semibold">Executive Leadership</Link>
+            <Link href="/executive-leadership" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 font-semibold">Executive Leadership</Link>
             <Link href="/hospital" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 font-semibold text-blue-600">Hospital & OPD</Link>
             <Link href="/hospital/aarogyasri" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 font-semibold text-blue-700">Arogyasree Scheme</Link>
             <Link href="/pre-and-para-departments" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 font-semibold">Pre & Para Clinical Departments</Link>

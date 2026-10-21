@@ -4,7 +4,7 @@ import { Stethoscope, CheckCircle2, ArrowRight, ShieldCheck } from "lucide-react
 
 export default function PGSpecializationsPage() {
   return (
-    <div className="py-16 bg-surface-light min-h-screen text-charcoal font-technical">
+    <div className="py-16 bg-transparent min-h-screen text-charcoal font-technical">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         {/* Header Breadcrumb */}
         <div className="mb-10">

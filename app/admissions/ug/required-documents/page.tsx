@@ -7,7 +7,7 @@ export default function UGRequiredDocumentsPage() {
   const admissionPdfDocs = getDocumentsByCategory("ug-document");
 
   return (
-    <div className="py-16 bg-surface-light min-h-screen text-charcoal">
+    <div className="py-16 bg-transparent min-h-screen text-charcoal">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         {/* Header Breadcrumb */}
         <div className="mb-8">
@@ -50,7 +50,7 @@ export default function UGRequiredDocumentsPage() {
             {admissionPdfDocs.map((pdf) => (
               <div
                 key={pdf.id}
-                className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-blue-500 transition-all flex flex-col justify-between space-y-4 group"
+                className="p-6 rounded-2xl bg-transparent border border-slate-200 hover:border-blue-500 transition-all flex flex-col justify-between space-y-4 group"
               >
                 <div>
                   <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">

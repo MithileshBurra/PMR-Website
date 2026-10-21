@@ -38,7 +38,7 @@ const REQUIRED_DOCUMENTS = [
 
 export default function AarogyasriPage() {
   return (
-    <div className="w-full bg-slate-50 min-h-screen text-slate-800 font-technical">
+    <div className="w-full bg-transparent min-h-screen text-slate-800 font-technical">
       {/* Hero Banner */}
       <section className="bg-slate-900 text-white py-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
@@ -79,13 +79,13 @@ export default function AarogyasriPage() {
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-slate-100 pt-6">
-                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+                <div className="p-4 rounded-2xl bg-transparent border border-slate-200/80">
                   <div className="text-xs font-bold text-blue-600 uppercase mb-1">Coverage Limit</div>
                   <div className="text-lg font-serif font-bold text-slate-900">Up to ₹5,00,000 / Year</div>
                   <div className="text-[11px] text-slate-500 mt-1">Per family for covered surgical procedures</div>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+                <div className="p-4 rounded-2xl bg-transparent border border-slate-200/80">
                   <div className="text-xs font-bold text-blue-600 uppercase mb-1">Helpdesk Operating Hours</div>
                   <div className="text-lg font-serif font-bold text-slate-900">24/7 Active Counter</div>
                   <div className="text-[11px] text-slate-500 mt-1">Dedicated Aarogyasri Mitras on campus</div>
@@ -102,7 +102,7 @@ export default function AarogyasriPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-semibold text-slate-800">
                 {COVERED_SPECIALTIES.map((spec, idx) => (
-                  <div key={idx} className="flex items-center gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200/70">
+                  <div key={idx} className="flex items-center gap-2.5 p-3 rounded-xl bg-transparent border border-slate-200/70">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                     <span>{spec}</span>
                   </div>
@@ -127,7 +127,7 @@ export default function AarogyasriPage() {
 
               <div className="space-y-3 text-xs text-slate-700">
                 {REQUIRED_DOCUMENTS.map((doc, idx) => (
-                  <div key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+                  <div key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-transparent border border-slate-200/80">
                     <div className="w-5 h-5 rounded-full bg-blue-600 text-white text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">
                       {idx + 1}
                     </div>

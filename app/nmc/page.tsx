@@ -14,7 +14,7 @@ export default function NmcPage() {
   ];
 
   return (
-    <div className="py-16 bg-surface-light min-h-screen text-charcoal">
+    <div className="py-16 bg-transparent min-h-screen text-charcoal">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <div className="mb-8">
           <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
@@ -38,7 +38,7 @@ export default function NmcPage() {
 
           <div className="space-y-4">
             {nmcDocs.map((doc, idx) => (
-              <div key={idx} className="p-5 rounded-2xl bg-surface-light border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div key={idx} className="p-5 rounded-2xl bg-transparent border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div className="flex items-center gap-3.5">
                   <div className="w-10 h-10 rounded-xl bg-red-50 text-red-700 flex items-center justify-center shrink-0">
                     <FileText className="w-5 h-5" />

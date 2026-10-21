@@ -84,6 +84,7 @@ export default function Footer() {
             <li><Link href="/hospital/bloodbank" className="hover:text-gold-brand">24/7 Licensed Blood Bank</Link></li>
             <li><Link href="/hospital/private-care-rooms" className="hover:text-gold-brand">Private AC Suites</Link></li>
             <li><Link href="/hospital/dental-services" className="hover:text-gold-brand">Dental OPD</Link></li>
+            <li><Link href="/gallery" className="hover:text-gold-brand font-semibold text-gold-brand/90">Institutional Gallery</Link></li>
           </ul>
         </div>
 

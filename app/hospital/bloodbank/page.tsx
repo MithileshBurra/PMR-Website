@@ -15,7 +15,7 @@ import {
 
 export default function BloodBankPage() {
   return (
-    <div className="py-16 bg-slate-50 min-h-screen text-slate-800 font-technical">
+    <div className="py-16 bg-transparent min-h-screen text-slate-800 font-technical">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         {/* Breadcrumb & Header */}
         <div className="mb-10">
@@ -79,15 +79,15 @@ export default function BloodBankPage() {
               </div>
 
               <div className="space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed font-technical">
-                <p className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+                <p className="p-4 rounded-2xl bg-transparent border border-slate-200/80">
                   <strong>The Blood Bank is under the purview of the Pathology department.</strong> It has a valid license up to <strong>26th April 2027</strong>. The Drugs Control Administration has granted a license for Blood components. On average, <strong>42 blood units are issued daily</strong>.
                 </p>
 
-                <p className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+                <p className="p-4 rounded-2xl bg-transparent border border-slate-200/80">
                   The Blood Bank at Patnam Mahender Reddy General Hospital is centrally air-conditioned, working <strong>24 hours round the clock</strong> and is one of the finest blood transfusion centers which collects blood, conducts camps, and promotes blood donation. We have been catering our services for over a decade to meet the needs of patients, hospitals, clinicians, and related services.
                 </p>
 
-                <p className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+                <p className="p-4 rounded-2xl bg-transparent border border-slate-200/80">
                   Our hospital also motivates voluntary donors about the importance of blood transfusions and educates them about the mandatory screening for infections transmitted by transfusing blood components.
                 </p>
               </div>
@@ -134,6 +134,113 @@ export default function BloodBankPage() {
               <div className="text-2xl font-bold font-mono">08417-299918</div>
               <p className="text-xs text-red-100">Contact Medical Hospital Blood Bank Desk for donor camp coordination or emergency blood requirement.</p>
             </div>
+          </div>
+        </div>
+
+        {/* Blood Bank Photo Gallery */}
+        <div className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-institutional mb-12">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-100">
+            <div>
+              <span className="px-3 py-1 rounded-full bg-red-50 text-red-900 border border-red-200 text-xs font-bold uppercase tracking-wider">
+                Photo Gallery
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-2">
+                Blood Bank Infrastructure & Facilities
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500 font-technical mt-1">
+                Glimpses of our certified component separation units, cold storage bays, and testing laboratory
+              </p>
+            </div>
+            <span className="px-3.5 py-1.5 rounded-2xl bg-slate-100 text-slate-800 text-xs font-bold font-mono shrink-0">
+              7 Facility Photos
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            {[
+              { src: "/images/hospital/bloodbank/vlcsnap-2026-02-17-12h57m32s904.jpg", title: "Blood Bank Reception & Donor Registration" },
+              { src: "/images/hospital/bloodbank/vlcsnap-2026-02-17-12h57m34s391.jpg", title: "Blood Storage Refrigerators (2°C - 6°C)" },
+              { src: "/images/hospital/bloodbank/vlcsnap-2026-02-17-12h57m37s127.jpg", title: "Platelet Incubator & Agitator Station" },
+              { src: "/images/hospital/bloodbank/vlcsnap-2026-02-17-12h57m38s587.jpg", title: "Deep Freezers & Plasma Storage (-80°C / -40°C)" },
+              { src: "/images/hospital/bloodbank/vlcsnap-2026-02-17-12h57m42s288.jpg", title: "Component Separation Centrifuge Suite" },
+              { src: "/images/hospital/bloodbank/vlcsnap-2026-02-17-12h57m46s783.jpg", title: "Transfusion Transmissible Infection (TTI) Testing" },
+              { src: "/images/hospital/bloodbank/vlcsnap-2026-02-17-12h57m48s651.jpg", title: "Laminar Air Flow & Blood Processing Counter" }
+            ].map((img, idx) => (
+              <div key={idx} className="group rounded-3xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 hover:shadow-xl transition-all duration-300">
+                <div className="overflow-hidden aspect-[16/10]">
+                  <img 
+                    src={img.src} 
+                    alt={img.title} 
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" 
+                  />
+                </div>
+                <div className="p-4 sm:p-5 text-sm sm:text-base text-slate-800 bg-white font-semibold border-t border-slate-100 flex items-center gap-2.5">
+                  <CheckCircle2 className="w-5 h-5 text-red-600 shrink-0" />
+                  <span>{img.title}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Major Equipment Table */}
+        <div className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-institutional mb-12">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-100">
+            <div>
+              <span className="px-3 py-1 rounded-full bg-red-50 text-red-900 border border-red-200 text-xs font-bold uppercase tracking-wider">
+                Cold Chain & Processing Infrastructure
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-2">
+                Blood Bank Equipment Inventory
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500 font-technical mt-1">
+                Precision temperature-controlled storage, component separation, and TTI testing equipment
+              </p>
+            </div>
+            <div className="text-right shrink-0">
+              <span className="px-3.5 py-1.5 rounded-2xl bg-slate-100 text-slate-800 text-xs font-bold font-mono">
+                13 Major Installations
+              </span>
+            </div>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-xs font-technical border-collapse">
+              <thead>
+                <tr className="bg-slate-50 border-y border-slate-200 text-slate-700 uppercase tracking-wider font-bold">
+                  <th className="py-3.5 px-4 w-20 text-center">S.No</th>
+                  <th className="py-3.5 px-6">Equipment</th>
+                  <th className="py-3.5 px-6 text-center w-36">Quantity</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                {[
+                  { sNo: 1, name: "-80°C Deep Freezer", quantity: 1 },
+                  { sNo: 2, name: "-40°C Deep Freezer", quantity: 1 },
+                  { sNo: 3, name: "22°C Platelet Incubator with Agitator", quantity: 1 },
+                  { sNo: 4, name: "Refrigerated Centrifuge", quantity: 1 },
+                  { sNo: 5, name: "Laminar Air Flow", quantity: 1 },
+                  { sNo: 6, name: "2°C - 6°C Blood Storage Refrigerator", quantity: 1 },
+                  { sNo: 7, name: "2°C - 6°C Blood Storage Refrigerator", quantity: 1 },
+                  { sNo: 8, name: "2°C - 6°C Kits Storage Refrigerator", quantity: 1 },
+                  { sNo: 9, name: "2°C - 6°C Samples Storage Refrigerator", quantity: 1 },
+                  { sNo: 10, name: "ELISA Washer", quantity: 1 },
+                  { sNo: 11, name: "ELISA Reader", quantity: 1 },
+                  { sNo: 12, name: "Donor Coach", quantity: 1 },
+                  { sNo: 13, name: "4°C - 37°C Cryo Thawing Bath", quantity: 1 }
+                ].map((item) => (
+                  <tr key={item.sNo} className="hover:bg-slate-50/70 transition-colors">
+                    <td className="py-3.5 px-4 text-center font-bold text-slate-500">{item.sNo}</td>
+                    <td className="py-3.5 px-6 font-semibold text-slate-900 text-sm">{item.name}</td>
+                    <td className="py-3.5 px-6 text-center">
+                      <span className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-red-50 text-red-700 font-bold font-mono text-xs border border-red-100">
+                        {item.quantity}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
 

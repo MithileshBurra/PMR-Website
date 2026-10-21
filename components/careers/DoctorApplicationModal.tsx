@@ -30,9 +30,7 @@ const DEPARTMENTS = [
   "Psychiatry",
   "Respiratory Medicine",
   "Otorhinolaryngology (ENT)",
-  "Ophthalmology",
-  "Emergency Medicine",
-  "Hospital Administration"
+  "Ophthalmology"
 ];
 
 const DESIGNATIONS = [
@@ -71,23 +69,6 @@ export default function DoctorApplicationModal({
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    // 1. Construct instant WhatsApp URL for +91 8074485411
-    const waText = 
-      `🏥 *PMRIMS DOCTOR FACULTY APPLICATION*\n\n` +
-      `👤 *Candidate:* ${formData.fullName}\n` +
-      `📧 *Email:* ${formData.email}\n` +
-      `📱 *Phone:* ${formData.phone}\n` +
-      `🩺 *Department:* ${formData.department}\n` +
-      `🎓 *Designation:* ${formData.designation || "N/A"}\n` +
-      `📜 *Qualification:* ${formData.qualification}\n` +
-      `🆔 *Reg No:* ${formData.regNumber || "N/A"}\n` +
-      `⏳ *Experience:* ${formData.experience || "N/A"} Years\n` +
-      `${formData.message ? `📝 *Note:* ${formData.message}\n` : ""}` +
-      `${resumeFile?.name ? `📄 *CV:* ${resumeFile.name}\n` : ""}\n` +
-      `Submitted via PMRIMS Recruitment Portal.`;
-
-    const waUrl = `https://wa.me/918074485411?text=${encodeURIComponent(waText)}`;
-
     try {
       const data = new FormData();
       Object.entries(formData).forEach(([key, val]) => {
@@ -104,16 +85,37 @@ export default function DoctorApplicationModal({
 
       const resData = await response.json();
 
+      // Construct WhatsApp text with direct resume link if available
+      const resumeLinkText = resData.resumeUrl 
+        ? `📄 *Download Resume:* ${resData.resumeUrl}\n`
+        : (resumeFile?.name ? `📄 *CV:* ${resumeFile.name}\n` : "");
+
+      const waText = 
+        `🏥 *PMRIMS DOCTOR FACULTY APPLICATION*\n\n` +
+        `👤 *Candidate:* ${formData.fullName}\n` +
+        `📧 *Email:* ${formData.email}\n` +
+        `📱 *Phone:* ${formData.phone}\n` +
+        `🩺 *Department:* ${formData.department}\n` +
+        `🎓 *Designation:* ${formData.designation || "N/A"}\n` +
+        `📜 *Qualification:* ${formData.qualification}\n` +
+        `🆔 *Reg No:* ${formData.regNumber || "N/A"}\n` +
+        `⏳ *Experience:* ${formData.experience || "N/A"} Years\n` +
+        `${formData.message ? `📝 *Note:* ${formData.message}\n` : ""}` +
+        `${resumeLinkText}\n` +
+        `Submitted via PMRIMS Recruitment Portal.`;
+
+      const finalWaUrl = `https://wa.me/918688315739?text=${encodeURIComponent(waText)}`;
+
       if (response.ok && resData.success) {
         setSubmitStatus({
           success: true,
           message: resData.message || "Your application has been submitted successfully!",
-          whatsappUrl: resData.whatsappUrl || waUrl
+          whatsappUrl: resData.whatsappUrl || finalWaUrl
         });
 
-        // Auto trigger WhatsApp location
+        // Trigger WhatsApp
         setTimeout(() => {
-          window.location.href = resData.whatsappUrl || waUrl;
+          window.location.href = resData.whatsappUrl || finalWaUrl;
         }, 300);
 
         setFormData({
@@ -213,7 +215,7 @@ export default function DoctorApplicationModal({
                   {submitStatus.whatsappUrl && (
                     <div className="pt-2 border-t border-emerald-200/80 flex flex-col sm:flex-row items-center justify-between gap-3">
                       <span className="text-xs font-bold text-emerald-800">
-                        Opening WhatsApp (+91 8074485411)...
+                        Opening WhatsApp (+91 8688315739)...
                       </span>
                       <a
                         href={submitStatus.whatsappUrl}
@@ -222,7 +224,7 @@ export default function DoctorApplicationModal({
                         className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs uppercase tracking-wider transition-all shadow flex items-center justify-center gap-2"
                       >
                         <MessageSquare className="w-4 h-4" />
-                        Click to Open WhatsApp (+91 8074485411)
+                        Click to Open WhatsApp (+91 8688315739)
                         <ExternalLink className="w-3.5 h-3.5" />
                       </a>
                     </div>
@@ -240,7 +242,7 @@ export default function DoctorApplicationModal({
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Dr. A. Rajesh Kumar"
+                      placeholder="Dr. A. Rajesh Kumar"
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 bg-slate-50/50"
@@ -254,7 +256,7 @@ export default function DoctorApplicationModal({
                     <input
                       type="email"
                       required
-                      placeholder="e.g. rajesh.kumar@gmail.com"
+                      placeholder="rajesh.kumar@gmail.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 bg-slate-50/50"
@@ -280,11 +282,11 @@ export default function DoctorApplicationModal({
 
                   <div>
                     <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                      Medical Reg Number (KMC / NMC)
+                      Medical Reg Number
                     </label>
                     <input
                       type="text"
-                      placeholder="e.g. TSMC / 84920"
+                      placeholder="TSMC / 84920"
                       value={formData.regNumber}
                       onChange={(e) => setFormData({ ...formData, regNumber: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 bg-slate-50/50"
@@ -338,7 +340,7 @@ export default function DoctorApplicationModal({
                     <input
                       type="text"
                       required
-                      placeholder="e.g. MD (General Medicine) / MS (Surgery)"
+                      placeholder="MD (General Medicine) / MS (Surgery)"
                       value={formData.qualification}
                       onChange={(e) => setFormData({ ...formData, qualification: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 bg-slate-50/50"
@@ -351,7 +353,7 @@ export default function DoctorApplicationModal({
                     </label>
                     <input
                       type="text"
-                      placeholder="e.g. 5 Years"
+                      placeholder="5 Years"
                       value={formData.experience}
                       onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 bg-slate-50/50"

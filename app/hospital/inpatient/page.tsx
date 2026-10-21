@@ -25,7 +25,7 @@ const IPD_FACILITIES = [
 
 export default function InpatientPage() {
   return (
-    <div className="w-full bg-slate-50 min-h-screen text-slate-800 font-technical">
+    <div className="w-full bg-transparent min-h-screen text-slate-800 font-technical">
       {/* Hero Banner */}
       <section className="bg-slate-900 text-white py-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
@@ -65,7 +65,7 @@ export default function InpatientPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-semibold text-slate-800 border-t border-slate-100 pt-6">
                 {IPD_FACILITIES.map((facility, idx) => (
-                  <div key={idx} className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200/70">
+                  <div key={idx} className="flex items-start gap-2.5 p-3 rounded-xl bg-transparent border border-slate-200/70">
                     <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                     <span>{facility}</span>
                   </div>
@@ -81,11 +81,11 @@ export default function InpatientPage() {
               <p className="text-xs text-slate-500">Information for Attendants & Visitors</p>
 
               <div className="space-y-4 text-xs text-slate-700 font-technical border-t border-slate-100 pt-4">
-                <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50">
+                <div className="flex items-center justify-between p-3 rounded-xl bg-transparent">
                   <span className="font-medium text-slate-600">Morning Visiting Hours:</span>
                   <span className="font-bold text-slate-900">7:00 AM – 8:00 AM</span>
                 </div>
-                <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50">
+                <div className="flex items-center justify-between p-3 rounded-xl bg-transparent">
                   <span className="font-medium text-slate-600">Evening Visiting Hours:</span>
                   <span className="font-bold text-slate-900">4:30 PM – 6:30 PM</span>
                 </div>

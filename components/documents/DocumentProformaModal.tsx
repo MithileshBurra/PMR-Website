@@ -32,7 +32,7 @@ const PG_DOCUMENTS = [
   "State Medical Council (KMC / NMC) Permanent Medical Registration Certificate",
   "10th / Secondary School Leaving Certificate (Proof of Age)",
   "Transfer Certificate (TC) & Migration Certificate from MBBS University",
-  "Work Experience Certificate & Conduct Certificate",
+  "Conduct & Character Certificate from MBBS College",
   "Passport Copy & Visa / Citizenship documents (for NRI Quota)",
   "8 Passport Size Photographs of the Candidate",
   "Aadhaar Card & PAN Card copies",

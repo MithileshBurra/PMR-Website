@@ -17,7 +17,7 @@ const OT_SLIDES = [
   {
     title: "Advanced Modular Operation Theatre",
     subtitle: "State-of-the-art sterile surgical suite with Laminar Air Flow & HEPA filtration",
-    image: "https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/ot_slider_1.png",
     badge: "14 Fully Equipped OTs"
   },
   {
@@ -57,7 +57,7 @@ export default function OperationTheatrePage() {
   };
 
   return (
-    <div className="w-full bg-slate-50 min-h-screen text-slate-800 font-technical">
+    <div className="w-full bg-transparent min-h-screen text-slate-800 font-technical">
       {/* Hero Banner */}
       <section className="bg-slate-900 text-white py-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
@@ -77,13 +77,13 @@ export default function OperationTheatrePage() {
       {/* Main Content Grid */}
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-8">
         {/* Interactive Image Slider */}
-        <div className="relative w-full h-[350px] sm:h-[480px] rounded-3xl overflow-hidden shadow-2xl mb-12 bg-slate-900 group">
+        <div className="relative w-full h-[380px] sm:h-[520px] lg:h-[580px] rounded-3xl overflow-hidden shadow-2xl mb-12 bg-slate-900 group">
           <img
             src={OT_SLIDES[currentSlide].image}
             alt={OT_SLIDES[currentSlide].title}
-            className="w-full h-full object-cover object-center transition-all duration-700 brightness-75 group-hover:scale-105"
+            className="w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent p-6 sm:p-10 flex flex-col justify-end">
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent p-6 sm:p-10 flex flex-col justify-end">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-bold uppercase tracking-wider w-max mb-2">
               <Sparkles className="w-3.5 h-3.5 text-gold-brand" />
               {OT_SLIDES[currentSlide].badge}
@@ -144,14 +144,14 @@ export default function OperationTheatrePage() {
 
               {/* PDF Specified Key Bullet Points */}
               <ul className="space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed font-technical">
-                <li className="flex items-start gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+                <li className="flex items-start gap-3 p-4 rounded-2xl bg-transparent border border-slate-200/80">
                   <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
                   <span>
                     <strong>PMRIMS houses a state-of-the-art Operation Theatre complex comprising 14 fully equipped operation theatres</strong>, including advanced modular theatres designed and maintained to meet the highest international standards of surgical safety, sterility, and infection control.
                   </span>
                 </li>
 
-                <li className="flex items-start gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+                <li className="flex items-start gap-3 p-4 rounded-2xl bg-transparent border border-slate-200/80">
                   <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
                   <span>
                     <strong>Each theatre is outfitted with modern surgical workstations, cutting-edge instrumentation</strong>, and advanced medical technology, enabling the performance of a wide range of routine, emergency, and highly specialized surgical procedures with precision, efficiency, and clinical excellence.
@@ -164,7 +164,7 @@ export default function OperationTheatrePage() {
                 <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-4">Surgical Suite Features:</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-semibold text-slate-800">
                   {OT_FEATURES.map((feature, idx) => (
-                    <div key={idx} className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200/70">
+                    <div key={idx} className="flex items-start gap-2.5 p-3 rounded-xl bg-transparent border border-slate-200/70">
                       <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                       <span>{feature}</span>
                     </div>

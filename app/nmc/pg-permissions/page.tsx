@@ -10,7 +10,7 @@ export default function PGPermissionsPage() {
   const allPgPermissions = getDocumentsByCategory("pg-permission");
 
   return (
-    <div className="py-16 bg-surface-light min-h-screen text-charcoal font-technical">
+    <div className="py-16 bg-transparent min-h-screen text-charcoal font-technical">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         {/* Breadcrumb Header */}
         <div className="mb-8">
@@ -51,7 +51,7 @@ export default function PGPermissionsPage() {
               {clinicalPermissions.map((doc) => (
                 <div
                   key={doc.id}
-                  className="p-5 sm:p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-blue-500 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4 group"
+                  className="p-5 sm:p-6 rounded-2xl bg-transparent border border-slate-200 hover:border-blue-500 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4 group"
                 >
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-105 transition-transform">

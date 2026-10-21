@@ -30,9 +30,9 @@ export default function Home() {
   const [isMuted, setIsMuted] = useState(true);
 
   return (
-    <div className="w-full bg-surface-light text-charcoal font-technical">
+    <div className="w-full bg-medical-pattern-overlay text-charcoal font-technical">
       {/* 1. Full-Width Clean Video Hero Canvas */}
-      <section className="relative w-full min-h-[85vh] flex items-center justify-center overflow-hidden bg-slate-950 text-white">
+      <section className="relative w-full h-[75vh] sm:h-[82vh] flex items-center justify-center overflow-hidden bg-slate-950 text-white">
         {/* Crisp Natural Background Video Layer */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <video
@@ -51,76 +51,14 @@ export default function Home() {
             Your browser does not support HTML5 video playback.
           </video>
 
-          {/* Minimal Neutral Legibility Scrims (No Blue Tint) */}
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/30 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/40 to-transparent" />
-        </div>
-
-        {/* Hero Content Container */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 py-20 w-full">
-          <div className="max-w-3xl">
-            {/* Accreditation Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-600 text-white text-xs font-bold uppercase tracking-wider mb-6 shadow-md"
-            >
-              <Award className="w-4 h-4 text-gold-brand" />
-              NMC Approved & KNRUHS Affiliated Institute
-            </motion.div>
-
-            {/* Headline */}
-            <motion.h1
-              initial={{ opacity: 0, y: 25 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl sm:text-6xl lg:text-7xl font-serif font-bold tracking-tight text-white leading-[1.15] mb-6 drop-shadow-md"
-            >
-              Excellence in <span className="text-blue-400 italic font-normal">Medical Education</span> & Patient Care.
-            </motion.h1>
-
-            {/* Subtitle */}
-            <motion.p
-              initial={{ opacity: 0, y: 25 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-slate-200 text-base sm:text-xl font-light leading-relaxed mb-10 max-w-2xl drop-shadow"
-            >
-              Dr. Patnam Mahender Reddy Institute of Medical Sciences delivers world-class MBBS, MD/MS residencies, and 1200+ bed hospital care at Chevella, Telangana.
-            </motion.p>
-
-            {/* Dual CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 25 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4"
-            >
-              <Link
-                href="/admissions/ug/seat-matrix"
-                className="px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs uppercase tracking-wider shadow-lg transition-all flex items-center justify-center gap-2"
-              >
-                <GraduationCap className="w-5 h-5 text-gold-brand" />
-                Explore Admissions 2026-27
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-
-              <Link
-                href="/hospital"
-                className="px-8 py-4 rounded-xl border border-white/20 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2"
-              >
-                <Hospital className="w-5 h-5 text-blue-400" />
-                PMR Hospital & OPD Services
-              </Link>
-            </motion.div>
-          </div>
+          {/* Minimal Neutral Legibility Scrims */}
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-slate-950/20" />
         </div>
 
         {/* Video Audio Control Overlay */}
         <button
           onClick={() => setIsMuted(!isMuted)}
-          className="absolute bottom-6 right-6 z-20 px-3.5 py-2 rounded-full bg-slate-900/60 backdrop-blur-md border border-white/20 text-white hover:bg-slate-900/80 transition-all flex items-center gap-2 text-xs font-semibold shadow-lg"
+          className="absolute bottom-16 right-6 z-20 px-3.5 py-2 rounded-full bg-slate-900/70 backdrop-blur-md border border-white/20 text-white hover:bg-slate-900/90 transition-all flex items-center gap-2 text-xs font-semibold shadow-lg"
           title={isMuted ? "Unmute Video Sound" : "Mute Video Sound"}
         >
           {isMuted ? (
@@ -130,57 +68,121 @@ export default function Home() {
             </>
           ) : (
             <>
-              <Volume2 className="w-4 h-4 text-blue-400 animate-pulse" />
+              <Volume2 className="w-4 h-4 text-orange-400 animate-pulse" />
               <span className="hidden sm:inline">Mute Sound</span>
             </>
           )}
         </button>
+
+        {/* Continuous Bottom Scrolling Ticker Bar with Logo Colors (Blue, Orange, Red) */}
+        <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-r from-blue-950 via-slate-950 to-blue-950 backdrop-blur-md border-t-2 border-orange-500/40 text-white py-3 overflow-hidden shadow-2xl">
+          <div className="animate-marquee font-technical text-xs sm:text-sm font-bold uppercase tracking-wider flex items-center gap-8">
+            <span className="text-orange-400 flex items-center gap-2 font-extrabold">
+              <Sparkles className="w-4 h-4 text-orange-400" />
+              Dr. Patnam Mahender Reddy Institute of Medical Sciences
+            </span>
+            <span className="text-red-400 font-extrabold bg-red-950/80 px-2.5 py-0.5 rounded border border-red-500/30">
+              • Admissions Open 2026-27
+            </span>
+            <span className="text-blue-300">• 250 MBBS Seats</span>
+            <span className="text-orange-300">• 94 MD/MS PG Seats</span>
+            <span className="text-red-300">• 1200+ Bed Teaching Hospital</span>
+            <span className="text-blue-200">• Chevella, Telangana</span>
+            <span className="text-orange-400 flex items-center gap-2 font-extrabold">
+              <Sparkles className="w-4 h-4 text-orange-400" />
+              Dr. Patnam Mahender Reddy Institute of Medical Sciences
+            </span>
+            <span className="text-red-400 font-extrabold bg-red-950/80 px-2.5 py-0.5 rounded border border-red-500/30">
+              • Admissions Open 2026-27
+            </span>
+            <span className="text-blue-300">• 250 MBBS Seats</span>
+            <span className="text-orange-300">• 94 MD/MS PG Seats</span>
+            <span className="text-red-300">• 1200+ Bed Teaching Hospital</span>
+            <span className="text-blue-200">• Chevella, Telangana</span>
+          </div>
+        </div>
       </section>
 
-      {/* 2. Key Portals Strip */}
-      <section className="relative z-20 -mt-10 max-w-7xl mx-auto px-4 sm:px-8">
+      {/* 2. Compact Key Portals Strip in Logo Colors (Blue, Orange, Red) */}
+      <section className="relative z-30 pt-8 sm:pt-10 max-w-7xl mx-auto px-4 sm:px-8 pb-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {/* Card 1: 250 MBBS Seats */}
-          <Link href="/admissions/ug/seat-matrix" className="bg-white p-6 rounded-2xl border border-slate-200 shadow-institutional hover:border-blue-500 transition-all flex items-center gap-4 group">
-            <div className="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+          {/* Card 1: 250 MBBS Seats (Blue Theme) */}
+          <Link 
+            href="/admissions/ug/seat-matrix" 
+            className="bg-white p-5 rounded-2xl border-2 border-slate-200/90 shadow-xl hover:border-blue-500 hover:shadow-blue-500/20 hover:-translate-y-1 transition-all duration-300 flex items-center gap-4 group"
+          >
+            <div className="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-md shadow-blue-600/30">
               <GraduationCap className="w-6 h-6" />
             </div>
-            <div>
-              <div className="text-xs font-bold text-blue-600 uppercase">Undergraduate</div>
-              <div className="text-sm font-serif font-bold text-slate-900">250 MBBS Seats</div>
+            <div className="overflow-hidden">
+              <div className="text-[10px] font-extrabold uppercase text-blue-600 tracking-wider">Undergraduate</div>
+              <h3 className="text-base font-serif font-bold text-slate-900 group-hover:text-blue-600 transition-colors truncate">
+                250 MBBS Seats
+              </h3>
+              <div className="text-[11px] text-slate-500 font-technical flex items-center gap-1 mt-0.5 font-semibold">
+                <span>View Seat Matrix</span>
+                <ChevronRight className="w-3.5 h-3.5 text-blue-600 group-hover:translate-x-1 transition-transform" />
+              </div>
             </div>
           </Link>
 
-          {/* Card 2: PG Specializations (MD / MS) */}
-          <Link href="/admissions/pg/specializations" className="bg-white p-6 rounded-2xl border border-slate-200 shadow-institutional hover:border-blue-500 transition-all flex items-center gap-4 group">
-            <div className="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+          {/* Card 2: PG Specializations (Orange Theme) */}
+          <Link 
+            href="/admissions/pg/specializations" 
+            className="bg-white p-5 rounded-2xl border-2 border-slate-200/90 shadow-xl hover:border-orange-500 hover:shadow-orange-500/20 hover:-translate-y-1 transition-all duration-300 flex items-center gap-4 group"
+          >
+            <div className="w-12 h-12 rounded-xl bg-orange-500 text-white flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-md shadow-orange-500/30">
               <Stethoscope className="w-6 h-6" />
             </div>
-            <div>
-              <div className="text-xs font-bold text-blue-600 uppercase">Postgraduate</div>
-              <div className="text-sm font-serif font-bold text-slate-900">PG Specializations (MD/MS)</div>
+            <div className="overflow-hidden">
+              <div className="text-[10px] font-extrabold uppercase text-orange-600 tracking-wider">Postgraduate</div>
+              <h3 className="text-base font-serif font-bold text-slate-900 group-hover:text-orange-600 transition-colors truncate">
+                PG Specializations
+              </h3>
+              <div className="text-[11px] text-slate-500 font-technical flex items-center gap-1 mt-0.5 font-semibold">
+                <span>94 MD/MS Seats</span>
+                <ChevronRight className="w-3.5 h-3.5 text-orange-600 group-hover:translate-x-1 transition-transform" />
+              </div>
             </div>
           </Link>
 
-          {/* Card 3: College of Nursing */}
-          <Link href="/allied-sciences/nursing" className="bg-white p-6 rounded-2xl border border-slate-200 shadow-institutional hover:border-blue-500 transition-all flex items-center gap-4 group">
-            <div className="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+          {/* Card 3: College of Nursing (Green Theme) */}
+          <Link 
+            href="/allied-sciences/nursing" 
+            className="bg-white p-5 rounded-2xl border-2 border-slate-200/90 shadow-xl hover:border-emerald-500 hover:shadow-emerald-500/20 hover:-translate-y-1 transition-all duration-300 flex items-center gap-4 group"
+          >
+            <div className="w-12 h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-md shadow-emerald-600/30">
               <BookOpen className="w-6 h-6" />
             </div>
-            <div>
-              <div className="text-xs font-bold text-blue-600 uppercase">College of</div>
-              <div className="text-sm font-serif font-bold text-slate-900">Nursing (B.Sc / M.Sc)</div>
+            <div className="overflow-hidden">
+              <div className="text-[10px] font-extrabold uppercase text-emerald-600 tracking-wider">College of</div>
+              <h3 className="text-base font-serif font-bold text-slate-900 group-hover:text-emerald-600 transition-colors truncate">
+                Nursing (B.Sc)
+              </h3>
+              <div className="text-[11px] text-slate-500 font-technical flex items-center gap-1 mt-0.5 font-semibold">
+                <span>View Program</span>
+                <ChevronRight className="w-3.5 h-3.5 text-emerald-600 group-hover:translate-x-1 transition-transform" />
+              </div>
             </div>
           </Link>
 
-          {/* Card 4: College of Physiotherapy */}
-          <Link href="/allied-sciences/physiotherapy" className="bg-white p-6 rounded-2xl border border-slate-200 shadow-institutional hover:border-blue-500 transition-all flex items-center gap-4 group">
-            <div className="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+          {/* Card 4: College of Physiotherapy (Red Theme) */}
+          <Link 
+            href="/allied-sciences/physiotherapy" 
+            className="bg-white p-5 rounded-2xl border-2 border-slate-200/90 shadow-xl hover:border-red-500 hover:shadow-red-500/20 hover:-translate-y-1 transition-all duration-300 flex items-center gap-4 group"
+          >
+            <div className="w-12 h-12 rounded-xl bg-red-600 text-white flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-md shadow-red-600/30">
               <HeartPulse className="w-6 h-6" />
             </div>
-            <div>
-              <div className="text-xs font-bold text-blue-600 uppercase">College of</div>
-              <div className="text-sm font-serif font-bold text-slate-900">Physiotherapy (BPT)</div>
+            <div className="overflow-hidden">
+              <div className="text-[10px] font-extrabold uppercase text-red-600 tracking-wider">College of</div>
+              <h3 className="text-base font-serif font-bold text-slate-900 group-hover:text-red-600 transition-colors truncate">
+                Physiotherapy (BPT)
+              </h3>
+              <div className="text-[11px] text-slate-500 font-technical flex items-center gap-1 mt-0.5 font-semibold">
+                <span>View BPT Degree</span>
+                <ChevronRight className="w-3.5 h-3.5 text-red-600 group-hover:translate-x-1 transition-transform" />
+              </div>
             </div>
           </Link>
         </div>
@@ -211,7 +213,7 @@ export default function Home() {
       </section>
 
       {/* 5. News & Events Section (Editable via config/news-events.ts) */}
-      <section className="py-24 bg-slate-50/80 border-t border-b border-slate-200/60">
+      <section className="py-24 bg-transparent border-t border-b border-slate-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
           {/* Section Subtitle & Heading */}
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -236,7 +238,7 @@ export default function Home() {
                 className="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
-                  <div className="relative h-56 w-full overflow-hidden bg-slate-100">
+                  <div className="relative h-72 sm:h-80 w-full overflow-hidden bg-slate-100">
                     <Image
                       src={item.image}
                       alt={item.title}

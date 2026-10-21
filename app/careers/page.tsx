@@ -9,7 +9,6 @@ import {
   Upload, 
   FileText, 
   Phone, 
-  Mail, 
   AlertCircle,
   MessageSquare,
   ExternalLink
@@ -35,9 +34,7 @@ const DEPARTMENTS = [
   "Psychiatry",
   "Respiratory Medicine",
   "Otorhinolaryngology (ENT)",
-  "Ophthalmology",
-  "Emergency Medicine",
-  "Hospital Administration"
+  "Ophthalmology"
 ];
 
 const DESIGNATIONS = [
@@ -72,23 +69,6 @@ export default function CareersPage() {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    // 1. Construct instant WhatsApp URL for +91 8074485411
-    const waText = 
-      `🏥 *PMRIMS DOCTOR FACULTY APPLICATION*\n\n` +
-      `👤 *Candidate:* ${formData.fullName}\n` +
-      `📧 *Email:* ${formData.email}\n` +
-      `📱 *Phone:* ${formData.phone}\n` +
-      `🩺 *Department:* ${formData.department}\n` +
-      `🎓 *Designation:* ${formData.designation || "N/A"}\n` +
-      `📜 *Qualification:* ${formData.qualification}\n` +
-      `🆔 *Reg No:* ${formData.regNumber || "N/A"}\n` +
-      `⏳ *Experience:* ${formData.experience || "N/A"} Years\n` +
-      `${formData.message ? `📝 *Note:* ${formData.message}\n` : ""}` +
-      `${resumeFile?.name ? `📄 *CV:* ${resumeFile.name}\n` : ""}\n` +
-      `Submitted via PMRIMS Recruitment Portal.`;
-
-    const waUrl = `https://wa.me/918074485411?text=${encodeURIComponent(waText)}`;
-
     try {
       const data = new FormData();
       Object.entries(formData).forEach(([key, val]) => {
@@ -105,16 +85,36 @@ export default function CareersPage() {
 
       const resData = await response.json();
 
+      const resumeLinkText = resData.resumeUrl 
+        ? `📄 *Download Resume:* ${resData.resumeUrl}\n`
+        : (resumeFile?.name ? `📄 *CV:* ${resumeFile.name}\n` : "");
+
+      const waText = 
+        `🏥 *PMRIMS DOCTOR FACULTY APPLICATION*\n\n` +
+        `👤 *Candidate:* ${formData.fullName}\n` +
+        `📧 *Email:* ${formData.email}\n` +
+        `📱 *Phone:* ${formData.phone}\n` +
+        `🩺 *Department:* ${formData.department}\n` +
+        `🎓 *Designation:* ${formData.designation || "N/A"}\n` +
+        `📜 *Qualification:* ${formData.qualification}\n` +
+        `🆔 *Reg No:* ${formData.regNumber || "N/A"}\n` +
+        `⏳ *Experience:* ${formData.experience || "N/A"} Years\n` +
+        `${formData.message ? `📝 *Note:* ${formData.message}\n` : ""}` +
+        `${resumeLinkText}\n` +
+        `Submitted via PMRIMS Recruitment Portal.`;
+
+      const finalWaUrl = `https://wa.me/918688315739?text=${encodeURIComponent(waText)}`;
+
       if (response.ok && resData.success) {
         setSubmitStatus({
           success: true,
           message: resData.message || "Your application has been submitted & saved successfully!",
-          whatsappUrl: resData.whatsappUrl || waUrl
+          whatsappUrl: resData.whatsappUrl || finalWaUrl
         });
 
         // Trigger WhatsApp location navigation to bypass popup blocker
         setTimeout(() => {
-          window.location.href = resData.whatsappUrl || waUrl;
+          window.location.href = resData.whatsappUrl || finalWaUrl;
         }, 300);
 
         setFormData({
@@ -146,8 +146,8 @@ export default function CareersPage() {
   };
 
   return (
-    <div className="w-full bg-slate-50 min-h-screen text-slate-800 font-technical">
-      {/* Hero Banner - Matching PMRIMS Dark Navy Theme */}
+    <div className="w-full bg-transparent min-h-screen text-slate-800 font-technical">
+      {/* Hero Banner */}
       <section className="bg-slate-900 text-white py-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-600/30 text-blue-300 text-xs font-bold uppercase tracking-wider mb-4 border border-blue-500/30">
@@ -212,7 +212,7 @@ export default function CareersPage() {
               </div>
             </div>
 
-            {/* Direct HR Contact Card - PMRIMS Royal Blue */}
+            {/* Direct HR Contact Card */}
             <div className="bg-blue-600 text-white p-8 rounded-3xl shadow-lg space-y-4">
               <h3 className="text-xl font-serif font-bold">HR & Recruitment Contact</h3>
               <p className="text-xs text-slate-100">For direct enquiries regarding pay scales, interview schedules, or faculty vacancies:</p>
@@ -220,15 +220,20 @@ export default function CareersPage() {
               <div className="space-y-3 pt-2 text-xs font-semibold">
                 <div className="flex items-center gap-3">
                   <Phone className="w-4 h-4 text-gold-brand shrink-0" />
-                  <span>+91 9133343726 / +91 9133343725</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Mail className="w-4 h-4 text-gold-brand shrink-0" />
-                  <span>mithileshburra@ekluvya.guru</span>
+                  <a href="tel:8688315739" className="hover:underline transition-all">
+                    +91 8688315739
+                  </a>
                 </div>
                 <div className="flex items-center gap-3">
                   <MessageSquare className="w-4 h-4 text-gold-brand shrink-0" />
-                  <span>WhatsApp: +91 8074485411</span>
+                  <a 
+                    href="https://wa.me/918688315739" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="hover:underline transition-all"
+                  >
+                    WhatsApp: +91 8688315739
+                  </a>
                 </div>
               </div>
             </div>
@@ -241,7 +246,7 @@ export default function CareersPage() {
                 <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">Doctor Faculty Application</span>
                 <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-1">Submit Your Professional Details</h2>
                 <p className="text-xs sm:text-sm text-slate-500 mt-1">
-                  Fill out the form below. Submitted details are saved to database and sent directly to WhatsApp (+91 8074485411) & Email.
+                  Fill out the form below. Submitted details are saved to database and sent directly to WhatsApp (+91 8688315739).
                 </p>
               </div>
 
@@ -268,7 +273,7 @@ export default function CareersPage() {
                   {submitStatus.whatsappUrl && (
                     <div className="pt-2 border-t border-emerald-200/80 flex flex-col sm:flex-row items-center justify-between gap-3">
                       <span className="text-xs font-bold text-emerald-800">
-                        Opening WhatsApp (+91 8074485411)...
+                        Opening WhatsApp (+91 8688315739)...
                       </span>
                       <a
                         href={submitStatus.whatsappUrl}
@@ -277,7 +282,7 @@ export default function CareersPage() {
                         className="w-full sm:w-auto px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs uppercase tracking-wider transition-all shadow-lg flex items-center justify-center gap-2"
                       >
                         <MessageSquare className="w-4 h-4" />
-                        Click Here to Open WhatsApp (+91 8074485411)
+                        Click Here to Open WhatsApp (+91 8688315739)
                         <ExternalLink className="w-3.5 h-3.5" />
                       </a>
                     </div>
@@ -295,10 +300,10 @@ export default function CareersPage() {
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Dr. A. Rajesh Kumar"
+                      placeholder="Dr. A. Rajesh Kumar"
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 bg-slate-50/50"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 bg-transparent/50"
                     />
                   </div>
 
@@ -309,10 +314,10 @@ export default function CareersPage() {
                     <input
                       type="email"
                       required
-                      placeholder="e.g. rajesh.kumar@gmail.com"
+                      placeholder="rajesh.kumar@gmail.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 bg-slate-50/50"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 bg-transparent/50"
                     />
                   </div>
                 </div>
@@ -329,20 +334,20 @@ export default function CareersPage() {
                       placeholder="+91 9876543210"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 bg-slate-50/50"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 bg-transparent/50"
                     />
                   </div>
 
                   <div>
                     <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                      Medical Reg Number (KMC / NMC)
+                      Medical Reg Number
                     </label>
                     <input
                       type="text"
-                      placeholder="e.g. TSMC / 84920"
+                      placeholder="TSMC / 84920"
                       value={formData.regNumber}
                       onChange={(e) => setFormData({ ...formData, regNumber: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 bg-slate-50/50"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 bg-transparent/50"
                     />
                   </div>
                 </div>
@@ -356,7 +361,7 @@ export default function CareersPage() {
                     <select
                       value={formData.department}
                       onChange={(e) => setFormData({ ...formData, department: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 bg-slate-50/50"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 bg-transparent/50"
                     >
                       {DEPARTMENTS.map((dept) => (
                         <option key={dept} value={dept}>
@@ -373,7 +378,7 @@ export default function CareersPage() {
                     <select
                       value={formData.designation}
                       onChange={(e) => setFormData({ ...formData, designation: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 bg-slate-50/50"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 bg-transparent/50"
                     >
                       {DESIGNATIONS.map((desg) => (
                         <option key={desg} value={desg}>
@@ -393,10 +398,10 @@ export default function CareersPage() {
                     <input
                       type="text"
                       required
-                      placeholder="e.g. MD (General Medicine) / MS (Surgery)"
+                      placeholder="MD (General Medicine) / MS (Surgery)"
                       value={formData.qualification}
                       onChange={(e) => setFormData({ ...formData, qualification: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 bg-slate-50/50"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 bg-transparent/50"
                     />
                   </div>
 
@@ -406,10 +411,10 @@ export default function CareersPage() {
                     </label>
                     <input
                       type="text"
-                      placeholder="e.g. 5 Years"
+                      placeholder="5 Years"
                       value={formData.experience}
                       onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 bg-slate-50/50"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 bg-transparent/50"
                     />
                   </div>
                 </div>
@@ -419,7 +424,7 @@ export default function CareersPage() {
                   <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
                     Attach Resume / CV File (PDF/DOCX)
                   </label>
-                  <div className="relative border-2 border-dashed border-slate-300 rounded-2xl p-6 text-center hover:border-blue-600 transition-colors bg-slate-50/50">
+                  <div className="relative border-2 border-dashed border-slate-300 rounded-2xl p-6 text-center hover:border-blue-600 transition-colors bg-transparent/50">
                     <input
                       type="file"
                       accept=".pdf,.doc,.docx"
@@ -453,7 +458,7 @@ export default function CareersPage() {
                     placeholder="Briefly state your current institution, research publications, or preferred joining timeline..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 bg-slate-50/50"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 bg-transparent/50"
                   />
                 </div>
 

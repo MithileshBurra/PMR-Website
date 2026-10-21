@@ -26,7 +26,7 @@ const PHARMACY_FEATURES = [
 
 export default function PharmacyPage() {
   return (
-    <div className="w-full bg-slate-50 min-h-screen text-slate-800 font-technical">
+    <div className="w-full bg-transparent min-h-screen text-slate-800 font-technical">
       {/* Hero Banner */}
       <section className="bg-slate-900 text-white py-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
@@ -66,7 +66,7 @@ export default function PharmacyPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-semibold text-slate-800 border-t border-slate-100 pt-6">
                 {PHARMACY_FEATURES.map((feature, idx) => (
-                  <div key={idx} className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200/70">
+                  <div key={idx} className="flex items-start gap-2.5 p-3 rounded-xl bg-transparent border border-slate-200/70">
                     <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                     <span>{feature}</span>
                   </div>
@@ -82,17 +82,17 @@ export default function PharmacyPage() {
               <p className="text-xs text-slate-500">Accessible Medicine Counters across Campus</p>
 
               <div className="space-y-3 pt-2 text-xs">
-                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+                <div className="p-3 rounded-xl bg-transparent border border-slate-200/80">
                   <div className="font-bold text-slate-900">Emergency & Casualty Outlet</div>
                   <div className="text-[11px] text-slate-500">Ground Floor, Emergency Block (Open 24/7)</div>
                 </div>
 
-                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+                <div className="p-3 rounded-xl bg-transparent border border-slate-200/80">
                   <div className="font-bold text-slate-900">OPD Central Outlet</div>
                   <div className="text-[11px] text-slate-500">Main OPD Building, Ground Floor (8:00 AM – 8:00 PM)</div>
                 </div>
 
-                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+                <div className="p-3 rounded-xl bg-transparent border border-slate-200/80">
                   <div className="font-bold text-slate-900">IPD Surgical Pharmacy</div>
                   <div className="text-[11px] text-slate-500">Inpatient Block, 1st Floor (Open 24/7)</div>
                 </div>

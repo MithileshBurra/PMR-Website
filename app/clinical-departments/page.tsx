@@ -176,7 +176,7 @@ const CLINICAL_DEPARTMENTS: DepartmentInfo[] = [
 
 export default function ClinicalDepartmentsPage() {
   return (
-    <div className="w-full bg-slate-50 min-h-screen text-slate-800 font-technical">
+    <div className="w-full bg-transparent min-h-screen text-slate-800 font-technical">
       {/* Hero Banner */}
       <section className="bg-slate-900 text-white py-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
@@ -244,7 +244,7 @@ export default function ClinicalDepartmentsPage() {
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700 font-semibold">
                       {dept.services.map((service, idx) => (
-                        <div key={idx} className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-200/70">
+                        <div key={idx} className="flex items-center gap-2 p-2.5 rounded-xl bg-transparent border border-slate-200/70">
                           <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0" />
                           <span>{service}</span>
                         </div>

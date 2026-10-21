@@ -12,12 +12,16 @@
   --color-surface-bg: #F8FAFC;
 }
 
-html {
+html, body {
   scroll-behavior: smooth;
   font-family: 'Inter', sans-serif;
-  background-color: var(--color-surface-bg);
   color: #0F172A;
   -webkit-font-smoothing: antialiased;
+  background-image: linear-gradient(to bottom, rgba(248, 250, 252, 0.82), rgba(248, 250, 252, 0.88)), url('/images/medical_pattern_bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
 }
 
 .font-editorial {
@@ -74,4 +78,40 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #BF2228;
+  border-radius: 4px;
 }
+
+/* Continuous Marquee Ticker Animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Custom Medical Network Background Pattern */
+.bg-medical-pattern {
+  background-image: url('/images/medical_pattern_bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+}
+
+.bg-medical-pattern-overlay {
+  background-image: linear-gradient(to bottom, rgba(248, 250, 252, 0.82), rgba(248, 250, 252, 0.88)), url('/images/medical_pattern_bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+}
+
+

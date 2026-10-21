@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const dirs = [
-  '/Users/mithileshgoud/.gemini/antigravity/brain/tempmediaStorage',
+  '/Users/mithileshgoud/.gemini/antigravity/brain/ab3dcdbb-df32-4404-b5d6-a0ee50d98161/.tempmediaStorage',
   '/Users/mithileshgoud/.gemini/antigravity/brain/ab3dcdbb-df32-4404-b5d6-a0ee50d98161/.user_uploaded'
 ];
 const targetDir = path.join(__dirname, '../public/images');

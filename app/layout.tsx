@@ -36,7 +36,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className="bg-surface-light text-charcoal antialiased selection:bg-emerald-brand selection:text-gold-brand relative overflow-x-hidden min-h-screen flex flex-col">
+      <body className="bg-medical-pattern-overlay text-charcoal antialiased selection:bg-emerald-brand selection:text-gold-brand relative overflow-x-hidden min-h-screen flex flex-col">
         {/* Sticky Quick Action Widget */}
         <QuickActionPanel />
 
@@ -44,7 +44,7 @@ export default function RootLayout({
         <Navbar />
 
         {/* Main Content Area */}
-        <main className="flex-1 w-full">
+        <main className="flex-1 w-full bg-medical-pattern-overlay">
           {children}
         </main>
 

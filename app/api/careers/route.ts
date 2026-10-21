@@ -7,6 +7,11 @@ const DATA_FILE_PATH = path.join(process.cwd(), "data", "career-applications.jso
 
 function saveApplicationToDisk(applicationData: any) {
   try {
+    const dataDir = path.join(process.cwd(), "data");
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir, { recursive: true });
+    }
+
     let applications = [];
     if (fs.existsSync(DATA_FILE_PATH)) {
       const fileContent = fs.readFileSync(DATA_FILE_PATH, "utf-8");
@@ -59,6 +64,35 @@ export async function POST(request: Request) {
       );
     }
 
+    // Save resume file to public/uploads/resumes so it can be viewed/downloaded via direct link in WhatsApp
+    let resumeUrl = "";
+    let savedFileName = "";
+    let resumeBuffer: Buffer | null = null;
+
+    if (resumeFile && resumeFile.size > 0) {
+      try {
+        const uploadsDir = path.join(process.cwd(), "public", "uploads", "resumes");
+        if (!fs.existsSync(uploadsDir)) {
+          fs.mkdirSync(uploadsDir, { recursive: true });
+        }
+        const fileExt = path.extname(resumeFile.name) || ".pdf";
+        const sanitizedBase = path.basename(resumeFile.name, fileExt).replace(/[^a-zA-Z0-9_-]/g, "_");
+        savedFileName = `${Date.now()}_${sanitizedBase}${fileExt}`;
+        const filePath = path.join(uploadsDir, savedFileName);
+
+        const arrayBuffer = await resumeFile.arrayBuffer();
+        resumeBuffer = Buffer.from(arrayBuffer);
+        fs.writeFileSync(filePath, resumeBuffer);
+
+        const host = request.headers.get("host") || "localhost:3020";
+        const protocol = host.includes("localhost") ? "http" : "https";
+        resumeUrl = `${protocol}://${host}/uploads/resumes/${savedFileName}`;
+        console.log(`[RESUME SAVED] Direct access link: ${resumeUrl}`);
+      } catch (fileErr) {
+        console.error("Error saving uploaded resume file:", fileErr);
+      }
+    }
+
     const applicationRecord = {
       fullName,
       email,
@@ -71,15 +105,16 @@ export async function POST(request: Request) {
       message,
       resumeName: resumeFile?.name || null,
       resumeSize: resumeFile ? `${Math.round(resumeFile.size / 1024)} KB` : null,
+      resumeUrl: resumeUrl || null,
     };
 
-    // 1. Always save to local JSON storage first so NO submission is ever lost!
+    // 1. Save to local JSON storage
     saveApplicationToDisk(applicationRecord);
 
     const recipientEmail = process.env.CAREER_EMAIL_RECIPIENT || "mithileshburra@ekluvya.guru";
-    const recipientWhatsApp = process.env.CAREER_WHATSAPP_NUMBER || "918074485411";
+    const recipientWhatsApp = process.env.CAREER_WHATSAPP_NUMBER || "918688315739";
 
-    // Build WhatsApp message text & URL
+    // Build WhatsApp message text & URL including direct clickable PDF resume link
     const waText = 
       `🏥 *PMRIMS DOCTOR FACULTY APPLICATION*\n\n` +
       `👤 *Candidate:* ${fullName}\n` +
@@ -91,7 +126,7 @@ export async function POST(request: Request) {
       `🆔 *Reg No:* ${regNumber || "N/A"}\n` +
       `⏳ *Experience:* ${experience || "N/A"} Years\n` +
       `${message ? `📝 *Note:* ${message}\n` : ""}` +
-      `${resumeFile?.name ? `📄 *CV:* ${resumeFile.name}\n` : ""}\n` +
+      `${resumeUrl ? `📄 *Download Resume:* ${resumeUrl}\n` : resumeFile?.name ? `📄 *CV File:* ${resumeFile.name}\n` : ""}\n` +
       `Submitted via PMRIMS Recruitment Portal.`;
 
     const whatsappUrl = `https://wa.me/${recipientWhatsApp}?text=${encodeURIComponent(waText)}`;
@@ -99,7 +134,7 @@ export async function POST(request: Request) {
     // Setup Nodemailer Transporter
     const smtpHost = process.env.SMTP_HOST || "smtp.gmail.com";
     const smtpPort = Number(process.env.SMTP_PORT) || 587;
-    const smtpUser = process.env.SMTP_USER;
+    const smtpUser = process.env.SMTP_USER || "mithileshburra@ekluvya.guru";
     const smtpPass = process.env.SMTP_PASS;
 
     const htmlContent = `
@@ -119,6 +154,7 @@ export async function POST(request: Request) {
             .label { font-size: 11px; text-transform: uppercase; color: #64748b; font-weight: 700; margin-bottom: 4px; }
             .value { font-size: 14px; font-weight: 600; color: #0f172a; word-break: break-word; }
             .full-width { grid-column: span 2; }
+            .btn { display: inline-block; padding: 10px 20px; background-color: #2563eb; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 13px; margin-top: 10px; }
             .footer { background: #f8fafc; padding: 20px; text-align: center; font-size: 12px; color: #94a3b8; border-top: 1px solid #e2e8f0; }
           </style>
         </head>
@@ -146,7 +182,7 @@ export async function POST(request: Request) {
                   <div class="value">${phone}</div>
                 </div>
                 <div class="item">
-                  <div class="label">Reg Number (KMC/NMC)</div>
+                  <div class="label">Medical Reg Number</div>
                   <div class="value">${regNumber || "N/A"}</div>
                 </div>
               </div>
@@ -183,11 +219,12 @@ export async function POST(request: Request) {
               }
 
               ${
-                resumeFile && resumeFile.name
+                resumeUrl || (resumeFile && resumeFile.name)
                   ? `
                 <div class="section-title">Resume Attachment</div>
                 <div class="item full-width">
-                  <div class="value">Attached File: ${resumeFile.name} (${Math.round(resumeFile.size / 1024)} KB)</div>
+                  <div class="value">File: ${resumeFile?.name || "Candidate CV"}</div>
+                  ${resumeUrl ? `<a href="${resumeUrl}" class="btn" target="_blank">View / Download Resume PDF</a>` : ""}
                 </div>
               `
                   : ""
@@ -202,6 +239,7 @@ export async function POST(request: Request) {
     `;
 
     let emailSent = false;
+    let emailError = "";
 
     if (smtpUser && smtpPass) {
       try {
@@ -216,11 +254,10 @@ export async function POST(request: Request) {
         });
 
         const attachments = [];
-        if (resumeFile && resumeFile.size > 0) {
-          const buffer = Buffer.from(await resumeFile.arrayBuffer());
+        if (resumeBuffer && resumeFile) {
           attachments.push({
             filename: resumeFile.name,
-            content: buffer,
+            content: resumeBuffer,
           });
         }
 
@@ -232,20 +269,27 @@ export async function POST(request: Request) {
           attachments,
         });
         emailSent = true;
+        console.log(`[EMAIL DISPATCH SUCCESS] Application email sent to ${recipientEmail}`);
       } catch (err: any) {
+        emailError = err.message || "SMTP transmission error";
         console.error("Failed to dispatch email via Nodemailer:", err);
       }
+    } else {
+      emailError = "SMTP_PASS not configured in .env.local";
+      console.warn(`[EMAIL DISPATCH SKIPPED] ${emailError}`);
     }
 
     return NextResponse.json({
       success: true,
       emailSent,
+      emailError: emailError || null,
       recipientEmail,
       recipientWhatsApp,
       whatsappUrl,
+      resumeUrl: resumeUrl || null,
       message: emailSent
-        ? `Application submitted! Email notification dispatched to ${recipientEmail}.`
-        : `Application recorded and saved successfully!`,
+        ? `Application submitted! Email sent to ${recipientEmail} and WhatsApp notification generated.`
+        : `Application recorded & saved! WhatsApp notification generated. (Note: Email dispatch requires SMTP_PASS in .env.local)`,
     });
   } catch (error: any) {
     console.error("Error processing career application:", error);

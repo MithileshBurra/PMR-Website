@@ -4,7 +4,7 @@ import { ShieldCheck, GraduationCap, ArrowRight, CheckCircle2, Phone, Calendar }
 
 export default function UGSeatMatrixPage() {
   return (
-    <div className="py-16 bg-surface-light min-h-screen text-charcoal">
+    <div className="py-16 bg-transparent min-h-screen text-charcoal">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         {/* Header Breadcrumb */}
         <div className="mb-8">

@@ -53,7 +53,7 @@ export default function StudentLifeSlider() {
   return (
     <div className="w-full relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 bg-slate-950 group">
       {/* Slider Frame with Full High Resolution Image Rendering */}
-      <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] min-h-[400px] sm:min-h-[520px]">
+      <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] min-h-[480px] sm:min-h-[580px] lg:min-h-[660px]">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide.id}

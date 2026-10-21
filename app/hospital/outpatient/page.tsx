@@ -29,7 +29,7 @@ const OPD_DEPARTMENTS = [
 
 export default function OutpatientPage() {
   return (
-    <div className="w-full bg-slate-50 min-h-screen text-slate-800 font-technical">
+    <div className="w-full bg-transparent min-h-screen text-slate-800 font-technical">
       {/* Hero Banner */}
       <section className="bg-slate-900 text-white py-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
@@ -64,13 +64,13 @@ export default function OutpatientPage() {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-semibold text-slate-800">
-                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+                <div className="p-4 rounded-2xl bg-transparent border border-slate-200/80">
                   <div className="text-xs font-bold text-blue-600 uppercase mb-1">Morning Session</div>
                   <div className="text-base font-bold text-slate-900">9:00 AM – 1:00 PM</div>
                   <div className="text-[11px] text-slate-500 mt-1">General OPD & Specialist Clinics</div>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+                <div className="p-4 rounded-2xl bg-transparent border border-slate-200/80">
                   <div className="text-xs font-bold text-blue-600 uppercase mb-1">Afternoon Session</div>
                   <div className="text-base font-bold text-slate-900">2:00 PM – 4:00 PM</div>
                   <div className="text-[11px] text-slate-500 mt-1">Follow-up & Super-Specialty Clinics</div>
@@ -98,7 +98,7 @@ export default function OutpatientPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-semibold text-slate-800">
                 {OPD_DEPARTMENTS.map((dept, idx) => (
-                  <div key={idx} className="flex items-center gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200/70">
+                  <div key={idx} className="flex items-center gap-2.5 p-3 rounded-xl bg-transparent border border-slate-200/70">
                     <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
                     <span>{dept}</span>
                   </div>

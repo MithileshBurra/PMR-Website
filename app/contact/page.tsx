@@ -7,7 +7,7 @@ export default function ContactPage() {
   const googleMapsUrl = "https://maps.app.goo.gl/yDneKph2qA7KVVgf9";
 
   return (
-    <div className="py-16 bg-surface-light min-h-screen text-charcoal">
+    <div className="py-16 bg-transparent min-h-screen text-charcoal">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         {/* Header Breadcrumb & Title */}
         <div className="mb-10">

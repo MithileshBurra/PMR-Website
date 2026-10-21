@@ -6,7 +6,7 @@ import { Quote, ShieldCheck, CheckCircle2, Award, GraduationCap } from "lucide-r
 
 export default function ExecutiveLeadership() {
   return (
-    <section id="executive-leadership" className="py-20 bg-slate-50/80 text-charcoal relative overflow-hidden border-t border-b border-slate-200/80">
+    <section id="executive-leadership" className="py-20 bg-transparent text-charcoal relative overflow-hidden border-t border-b border-slate-200/80">
       {/* Decorative Background Accents */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/5 rounded-full filter blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-600/5 rounded-full filter blur-3xl pointer-events-none" />
@@ -54,7 +54,7 @@ export default function ExecutiveLeadership() {
         >
           {/* Portrait Column */}
           <div className="lg:col-span-5 relative">
-            <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-white p-2 group">
+            <div className="relative w-full aspect-[3/4] min-h-[440px] sm:min-h-[520px] rounded-3xl overflow-hidden shadow-2xl border border-slate-200 bg-white p-2.5 group">
               <div className="relative w-full h-full rounded-xl overflow-hidden">
                 <Image
                   src="/images/chairman.jpg"
@@ -133,15 +133,15 @@ export default function ExecutiveLeadership() {
           {/* Statement & Bio Column */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-6 order-2 lg:order-1">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 flex items-center gap-1.5 mb-3">
-                <GraduationCap className="w-4 h-4 text-indigo-600" /> Vice Chairman&apos;s Vision
+              <span className="text-xs font-bold uppercase tracking-wider text-orange-600 flex items-center gap-1.5 mb-3">
+                <GraduationCap className="w-4 h-4 text-orange-600" /> Vice Chairman&apos;s Vision
               </span>
 
               {/* Quote Block - Spacious & Elegant Layout */}
-              <div className="relative p-6 sm:p-8 bg-indigo-50/60 rounded-2xl border-l-4 border-indigo-600 mb-6">
-                <Quote className="w-8 h-8 text-indigo-600/30 absolute top-4 right-4" />
+              <div className="relative p-6 sm:p-8 bg-orange-50/70 rounded-2xl border-l-4 border-orange-500 mb-6">
+                <Quote className="w-8 h-8 text-orange-500/30 absolute top-4 right-4" />
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-slate-900 leading-relaxed">
-                  &ldquo;Empowering Next-Gen Physicians Through <span className="text-indigo-600 italic font-normal">Educational Excellence & Innovation</span>.&rdquo;
+                  &ldquo;Empowering Next-Gen Physicians Through <span className="text-orange-600 italic font-normal">Educational Excellence & Innovation</span>.&rdquo;
                 </h3>
               </div>
 
@@ -159,19 +159,19 @@ export default function ExecutiveLeadership() {
             {/* Key Pillars */}
             <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-200 text-xs font-semibold text-slate-800">
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-indigo-600 shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
                 <span>45+ Years Educational Leadership</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-indigo-600 shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
                 <span>200+ Institutions Across 3 States</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-indigo-600 shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
                 <span>Founder, SR University Warangal</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-indigo-600 shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
                 <span>Benchmarked Quality & Ethical Values</span>
               </div>
             </div>
@@ -179,7 +179,7 @@ export default function ExecutiveLeadership() {
 
           {/* Portrait Column */}
           <div className="lg:col-span-5 relative order-1 lg:order-2">
-            <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-white p-2 group">
+            <div className="relative w-full aspect-[3/4] min-h-[440px] sm:min-h-[520px] rounded-3xl overflow-hidden shadow-2xl border border-slate-200 bg-white p-2.5 group">
               <div className="relative w-full h-full rounded-xl overflow-hidden">
                 <Image
                   src="/images/vice_chairman.jpg"
@@ -189,7 +189,7 @@ export default function ExecutiveLeadership() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6 text-white">
-                  <span className="px-3 py-1 rounded bg-indigo-600 text-white font-extrabold text-[11px] uppercase tracking-wider shadow">
+                  <span className="px-3 py-1 rounded bg-orange-600 text-white font-extrabold text-[11px] uppercase tracking-wider shadow">
                     Vice Chairman
                   </span>
                   <h3 className="text-xl sm:text-2xl font-serif font-bold mt-2 text-white">Sri A. Varada Reddy Garu</h3>

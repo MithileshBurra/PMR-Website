@@ -64,7 +64,7 @@ export default function ApplicationsDashboard() {
   );
 
   return (
-    <div className="w-full bg-slate-50 min-h-screen text-slate-800 font-technical py-12">
+    <div className="w-full bg-transparent min-h-screen text-slate-800 font-technical py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
         {/* Header */}
@@ -139,24 +139,24 @@ export default function ApplicationsDashboard() {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-technical">
-                  <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <div className="p-3.5 rounded-2xl bg-transparent border border-slate-200/80">
                     <div className="text-[10px] font-bold text-slate-400 uppercase mb-1">Email Address</div>
                     <div className="font-bold text-slate-900">{app.email}</div>
                   </div>
 
-                  <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <div className="p-3.5 rounded-2xl bg-transparent border border-slate-200/80">
                     <div className="text-[10px] font-bold text-slate-400 uppercase mb-1">Phone / WhatsApp</div>
                     <div className="font-bold text-slate-900">{app.phone}</div>
                   </div>
 
-                  <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <div className="p-3.5 rounded-2xl bg-transparent border border-slate-200/80">
                     <div className="text-[10px] font-bold text-slate-400 uppercase mb-1">Qualification & Reg</div>
                     <div className="font-bold text-slate-900">{app.qualification} ({app.regNumber || "No Reg Provided"})</div>
                   </div>
                 </div>
 
                 {app.message && (
-                  <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 text-xs text-slate-700">
+                  <div className="p-4 rounded-2xl bg-transparent border border-slate-200/80 text-xs text-slate-700">
                     <span className="font-bold text-slate-900 block mb-1">Cover Note:</span>
                     {app.message}
                   </div>
