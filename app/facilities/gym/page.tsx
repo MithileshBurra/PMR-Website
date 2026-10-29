@@ -9,8 +9,17 @@ import {
   Clock, 
   ShieldCheck, 
   Flame, 
-  Heart 
+  Heart,
+  Camera
 } from "lucide-react";
+
+const GYM_PHOTOS = [
+  { src: "/images/facilities/gym/DSC06594.JPG", title: "Strength Training & Weight Machine Stations" },
+  { src: "/images/facilities/gym/DSC06603.JPG", title: "Multi-Station Resistance & Free Weights Zone" },
+  { src: "/images/facilities/gym/DSC06606.JPG", title: "Cardiovascular Fitness & Digital Treadmills" },
+  { src: "/images/facilities/gym/DSC06609.JPG", title: "Cross-Training & Functional Conditioning Area" },
+  { src: "/images/facilities/gym/DSC06620.JPG", title: "Air-Conditioned Indoor Campus Gymnasium" }
+];
 
 export default function GymPage() {
   return (
@@ -63,7 +72,7 @@ export default function GymPage() {
         </div>
 
         {/* Specifications & Operating Hours */}
-        <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm mb-10 space-y-6">
+        <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm mb-12 space-y-6">
           <div className="border-b border-slate-100 pb-4">
             <h2 className="text-2xl font-serif font-bold text-slate-900">Gymnasium Infrastructure & Operating Schedule</h2>
             <p className="text-xs text-slate-500">Air-Conditioned Indoor Fitness Facility</p>
@@ -86,6 +95,45 @@ export default function GymPage() {
               <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0" />
               <span>Qualified Fitness Trainer on Duty for Guidance & Workout Safety</span>
             </div>
+          </div>
+        </div>
+
+        {/* Gymnasium Photo Gallery */}
+        <div className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-institutional mb-14">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-100">
+            <div>
+              <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-900 border border-blue-200 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 w-max">
+                <Camera className="w-3.5 h-3.5 text-blue-600" />
+                Photo Gallery
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-2">
+                PMRIMS Fitness & Gymnasium Facility
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500 font-technical mt-1">
+                Visual glimpses of our indoor fitness centre, cardiovascular stations, strength training equipment, and free weight zones
+              </p>
+            </div>
+            <span className="px-3.5 py-1.5 rounded-2xl bg-slate-100 text-slate-800 text-xs font-bold font-mono shrink-0">
+              {GYM_PHOTOS.length} Facility Photos
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {GYM_PHOTOS.map((img, idx) => (
+              <div key={idx} className="group rounded-3xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 hover:shadow-xl transition-all duration-300">
+                <div className="overflow-hidden aspect-[16/10]">
+                  <img 
+                    src={img.src} 
+                    alt={img.title} 
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" 
+                  />
+                </div>
+                <div className="p-4 sm:p-5 text-sm text-slate-800 bg-white font-semibold border-t border-slate-100 flex items-center gap-2.5">
+                  <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0" />
+                  <span>{img.title}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
