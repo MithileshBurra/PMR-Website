@@ -11,7 +11,8 @@ import {
   Phone, 
   AlertCircle,
   MessageSquare,
-  ExternalLink
+  ExternalLink,
+  Mail
 } from "lucide-react";
 
 const DEPARTMENTS = [
@@ -233,6 +234,12 @@ export default function CareersPage() {
                     className="hover:underline transition-all"
                   >
                     WhatsApp: +91 8688315739
+                  </a>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Mail className="w-4 h-4 text-gold-brand shrink-0" />
+                  <a href="mailto:pmrims@gmail.com" className="hover:underline transition-all">
+                    pmrims@gmail.com
                   </a>
                 </div>
               </div>

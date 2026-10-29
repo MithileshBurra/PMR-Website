@@ -151,7 +151,7 @@ export default function ExecutiveLeadership() {
                   <strong>Sri A. Varada Reddy Garu</strong> is a pioneer in providing quality education whose efforts have transformed the lives of many youngsters. A man known for discipline and vision, Sri Varada Reddy has been serving the field of education since 1976. With his unstinted efforts, SR Educational Institutions have become a trusted brand name.
                 </p>
                 <p>
-                  The society runs 200+ educational institutions including schools, junior colleges, degree colleges, and professional colleges managed by the SR Group across Telangana, Andhra Pradesh, and Karnataka. The crowning achievement of his educational journey is the establishment of <strong>SR University, Warangal</strong> — a premier institution of higher learning that stands as a testament to his vision of bringing internationally benchmarked education to the heart of Telangana. International standards and values are given high priority across all SR institutions, and Sri Varada Reddy has made quality consciousness coupled with ethical practices the very DNA of the SR Group.
+                  The society runs 300+ educational institutions including schools, junior colleges, degree colleges, and professional colleges managed by the SR Group across Telangana, Andhra Pradesh, and Karnataka. The crowning achievement of his educational journey is the establishment of <strong>SR University, Warangal</strong> — a premier institution of higher learning that stands as a testament to his vision of bringing internationally benchmarked education to the heart of Telangana. International standards and values are given high priority across all SR institutions, and Sri Varada Reddy has made quality consciousness coupled with ethical practices the very DNA of the SR Group.
                 </p>
               </div>
             </div>
@@ -164,7 +164,7 @@ export default function ExecutiveLeadership() {
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
-                <span>200+ Institutions Across 3 States</span>
+                <span>300+ Institutions Across 3 States</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
