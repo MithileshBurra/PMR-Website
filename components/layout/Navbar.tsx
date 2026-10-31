@@ -40,21 +40,21 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full transition-all duration-300">
       {/* Top Utility Contact Bar */}
-      <div className="bg-slate-900 text-slate-300 text-xs border-b border-slate-800 py-1.5 px-4 sm:px-8">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
+      <div className="bg-slate-900 text-slate-300 text-xs sm:text-[13px] border-b border-slate-800 py-1.5 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1600px] mx-auto flex items-center justify-between gap-2">
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1.5 text-blue-400 font-medium">
-              <ShieldCheck className="w-3.5 h-3.5" /> NMC & KNRUHS Approved Institute
+              <ShieldCheck className="w-4 h-4 shrink-0" /> NMC & KNRUHS Approved Institute
             </span>
             <span className="hidden md:inline-block text-slate-700">|</span>
             <span className="hidden md:flex items-center gap-1 text-slate-400">
-              <Clock className="w-3.5 h-3.5 text-blue-400" /> 24/7 Emergency & Casualty Active
+              <Clock className="w-4 h-4 shrink-0 text-blue-400" /> 24/7 Emergency & Casualty Active
             </span>
           </div>
 
-          <div className="flex items-center gap-4 text-xs font-medium">
+          <div className="flex items-center gap-4 text-xs sm:text-[13px] font-medium">
             <a href="tel:08417299918" className="flex items-center gap-1.5 text-slate-200 hover:text-blue-400 transition-colors">
-              <Phone className="w-3.5 h-3.5 text-blue-400" /> 08417-299918
+              <Phone className="w-4 h-4 shrink-0 text-blue-400" /> 08417-299918
             </a>
           </div>
         </div>
@@ -68,7 +68,7 @@ export default function Navbar() {
             : "py-3.5 border-b border-slate-100"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Logo Badge */}
           <Link href="/" className="flex items-center gap-3 group shrink-0">
             <div className="relative w-11 h-11 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
@@ -81,22 +81,19 @@ export default function Navbar() {
                 priority
               />
             </div>
-            <div className="flex flex-col">
-              <span className="font-sans font-black text-xl tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors leading-none">
+            <div className="flex flex-col justify-center">
+              <span className="font-sans font-black text-2xl lg:text-3xl tracking-tight text-red-600 group-hover:text-red-700 transition-colors leading-none">
                 PMRIMS
-              </span>
-              <span className="text-[11px] font-semibold text-slate-500 tracking-tight font-sans mt-0.5">
-                Medical Sciences
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation Items */}
-          <div className="hidden xl:flex items-center gap-1 text-sm font-semibold text-slate-700">
+          <div className="hidden xl:flex items-center gap-0.5 min-[1400px]:gap-1 2xl:gap-1.5 text-[13.5px] min-[1400px]:text-[15px] 2xl:text-base font-semibold text-slate-700 whitespace-nowrap">
             {/* 1. Home */}
             <Link
               href="/"
-              className={`px-3 py-1.5 rounded-full transition-all ${
+              className={`px-2 min-[1400px]:px-2.5 2xl:px-3 py-1.5 rounded-full transition-all whitespace-nowrap ${
                 pathname === "/"
                   ? "bg-blue-50 text-blue-600 font-bold"
                   : "hover:text-blue-600 hover:bg-slate-50"
@@ -112,11 +109,11 @@ export default function Navbar() {
               onMouseLeave={() => setActiveDropdown(null)}
             >
               <button
-                className={`px-3 py-1.5 rounded-full flex items-center gap-1 transition-all focus:outline-none ${
+                className={`px-2 min-[1400px]:px-2.5 2xl:px-3 py-1.5 rounded-full flex items-center gap-1 transition-all focus:outline-none whitespace-nowrap ${
                   activeDropdown === "about" ? "bg-blue-50 text-blue-600 font-bold" : "hover:text-blue-600 hover:bg-slate-50"
                 }`}
               >
-                About Us <ChevronDown className={`w-4 h-4 transition-transform ${activeDropdown === "about" ? "rotate-180 text-blue-600" : "text-slate-400"}`} />
+                <span className="whitespace-nowrap">About Us</span> <ChevronDown className={`w-3.5 h-3.5 2xl:w-4 2xl:h-4 shrink-0 transition-transform ${activeDropdown === "about" ? "rotate-180 text-blue-600" : "text-slate-400"}`} />
               </button>
 
               {activeDropdown === "about" && (
@@ -139,13 +136,13 @@ export default function Navbar() {
             >
               <Link
                 href="/hospital"
-                className={`px-3 py-1.5 rounded-full flex items-center gap-1 transition-all ${
+                className={`px-2 min-[1400px]:px-2.5 2xl:px-3 py-1.5 rounded-full flex items-center gap-1 transition-all whitespace-nowrap ${
                   activeDropdown === "hospital" || pathname.startsWith("/hospital")
                     ? "bg-blue-50 text-blue-600 font-bold"
                     : "hover:text-blue-600 hover:bg-slate-50"
                 }`}
               >
-                Hospital <ChevronDown className={`w-4 h-4 transition-transform ${activeDropdown === "hospital" ? "rotate-180 text-blue-600" : "text-slate-400"}`} />
+                <span className="whitespace-nowrap">Hospital</span> <ChevronDown className={`w-3.5 h-3.5 2xl:w-4 2xl:h-4 shrink-0 transition-transform ${activeDropdown === "hospital" ? "rotate-180 text-blue-600" : "text-slate-400"}`} />
               </Link>
 
               {activeDropdown === "hospital" && (
@@ -210,13 +207,13 @@ export default function Navbar() {
             >
               <Link
                 href="/facilities"
-                className={`px-3 py-1.5 rounded-full flex items-center gap-1 transition-all ${
+                className={`px-2 min-[1400px]:px-2.5 2xl:px-3 py-1.5 rounded-full flex items-center gap-1 transition-all whitespace-nowrap ${
                   activeDropdown === "facilities" || pathname.startsWith("/facilities")
                     ? "bg-blue-50 text-blue-600 font-bold"
                     : "hover:text-blue-600 hover:bg-slate-50"
                 }`}
               >
-                Facilities <ChevronDown className={`w-4 h-4 transition-transform ${activeDropdown === "facilities" ? "rotate-180 text-blue-600" : "text-slate-400"}`} />
+                <span className="whitespace-nowrap">Facilities</span> <ChevronDown className={`w-3.5 h-3.5 2xl:w-4 2xl:h-4 shrink-0 transition-transform ${activeDropdown === "facilities" ? "rotate-180 text-blue-600" : "text-slate-400"}`} />
               </Link>
 
               {activeDropdown === "facilities" && (
@@ -274,13 +271,13 @@ export default function Navbar() {
               onMouseLeave={() => setActiveDropdown(null)}
             >
               <button
-                className={`px-3 py-1.5 rounded-full flex items-center gap-1 transition-all focus:outline-none ${
+                className={`px-2 min-[1400px]:px-2.5 2xl:px-3 py-1.5 rounded-full flex items-center gap-1 transition-all focus:outline-none whitespace-nowrap ${
                   activeDropdown === "departments" || pathname.includes("clinical-departments")
                     ? "bg-blue-50 text-blue-600 font-bold"
                     : "hover:text-blue-600 hover:bg-slate-50"
                 }`}
               >
-                Departments <ChevronDown className={`w-4 h-4 transition-transform ${activeDropdown === "departments" ? "rotate-180 text-blue-600" : "text-slate-400"}`} />
+                <span className="whitespace-nowrap">Departments</span> <ChevronDown className={`w-3.5 h-3.5 2xl:w-4 2xl:h-4 shrink-0 transition-transform ${activeDropdown === "departments" ? "rotate-180 text-blue-600" : "text-slate-400"}`} />
               </button>
 
               {activeDropdown === "departments" && (
@@ -305,13 +302,13 @@ export default function Navbar() {
               onMouseLeave={() => setActiveDropdown(null)}
             >
               <button
-                className={`px-3 py-1.5 rounded-full flex items-center gap-1 transition-all focus:outline-none ${
+                className={`px-2 min-[1400px]:px-2.5 2xl:px-3 py-1.5 rounded-full flex items-center gap-1 transition-all focus:outline-none whitespace-nowrap ${
                   activeDropdown === "allied" || pathname.startsWith("/allied-sciences")
                     ? "bg-blue-50 text-blue-600 font-bold"
                     : "hover:text-blue-600 hover:bg-slate-50"
                 }`}
               >
-                Allied Sciences <ChevronDown className={`w-4 h-4 transition-transform ${activeDropdown === "allied" ? "rotate-180 text-blue-600" : "text-slate-400"}`} />
+                <span className="whitespace-nowrap">Allied Sciences</span> <ChevronDown className={`w-3.5 h-3.5 2xl:w-4 2xl:h-4 shrink-0 transition-transform ${activeDropdown === "allied" ? "rotate-180 text-blue-600" : "text-slate-400"}`} />
               </button>
 
               {activeDropdown === "allied" && (
@@ -332,7 +329,7 @@ export default function Navbar() {
             {/* 7. Staff (NEW Link -> /staff) */}
             <Link
               href="/staff"
-              className={`px-3 py-1.5 rounded-full transition-all ${
+              className={`px-2 min-[1400px]:px-2.5 2xl:px-3 py-1.5 rounded-full transition-all whitespace-nowrap ${
                 pathname === "/staff"
                   ? "bg-blue-50 text-blue-600 font-bold"
                   : "hover:text-blue-600 hover:bg-slate-50"
@@ -348,13 +345,13 @@ export default function Navbar() {
               onMouseLeave={() => setActiveDropdown(null)}
             >
               <button
-                className={`px-3 py-1.5 rounded-full flex items-center gap-1 transition-all focus:outline-none ${
+                className={`px-2 min-[1400px]:px-2.5 2xl:px-3 py-1.5 rounded-full flex items-center gap-1 transition-all focus:outline-none whitespace-nowrap ${
                   activeDropdown === "admissions" || pathname.startsWith("/admissions")
                     ? "bg-blue-50 text-blue-600 font-bold"
                     : "hover:text-blue-600 hover:bg-slate-50"
                 }`}
               >
-                Admissions <ChevronDown className={`w-4 h-4 transition-transform ${activeDropdown === "admissions" ? "rotate-180 text-blue-600" : "text-slate-400"}`} />
+                <span className="whitespace-nowrap">Admissions</span> <ChevronDown className={`w-3.5 h-3.5 2xl:w-4 2xl:h-4 shrink-0 transition-transform ${activeDropdown === "admissions" ? "rotate-180 text-blue-600" : "text-slate-400"}`} />
               </button>
 
               {activeDropdown === "admissions" && (
@@ -397,13 +394,13 @@ export default function Navbar() {
               onMouseLeave={() => setActiveDropdown(null)}
             >
               <button
-                className={`px-3 py-1.5 rounded-full flex items-center gap-1 transition-all focus:outline-none ${
+                className={`px-2 min-[1400px]:px-2.5 2xl:px-3 py-1.5 rounded-full flex items-center gap-1 transition-all focus:outline-none whitespace-nowrap ${
                   activeDropdown === "nmc" || pathname.startsWith("/nmc")
                     ? "bg-blue-50 text-blue-600 font-bold"
                     : "hover:text-blue-600 hover:bg-slate-50"
                 }`}
               >
-                NMC <ChevronDown className={`w-4 h-4 transition-transform ${activeDropdown === "nmc" ? "rotate-180 text-blue-600" : "text-slate-400"}`} />
+                <span className="whitespace-nowrap">NMC</span> <ChevronDown className={`w-3.5 h-3.5 2xl:w-4 2xl:h-4 shrink-0 transition-transform ${activeDropdown === "nmc" ? "rotate-180 text-blue-600" : "text-slate-400"}`} />
               </button>
 
               {activeDropdown === "nmc" && (
@@ -430,7 +427,7 @@ export default function Navbar() {
             {/* 10. Careers */}
             <Link
               href="/careers"
-              className={`px-3 py-1.5 rounded-full transition-all ${
+              className={`px-2 min-[1400px]:px-2.5 2xl:px-3 py-1.5 rounded-full transition-all whitespace-nowrap ${
                 pathname === "/careers"
                   ? "bg-blue-50 text-blue-600 font-bold"
                   : "hover:text-blue-600 hover:bg-slate-50"
@@ -442,7 +439,7 @@ export default function Navbar() {
             {/* 11. Gallery */}
             <Link
               href="/gallery"
-              className={`px-3 py-1.5 rounded-full transition-all ${
+              className={`px-2 min-[1400px]:px-2.5 2xl:px-3 py-1.5 rounded-full transition-all whitespace-nowrap ${
                 pathname === "/gallery"
                   ? "bg-blue-50 text-blue-600 font-bold"
                   : "hover:text-blue-600 hover:bg-slate-50"
@@ -454,7 +451,7 @@ export default function Navbar() {
             {/* 12. Contact */}
             <Link
               href="/contact"
-              className={`px-3 py-1.5 rounded-full transition-all ${
+              className={`px-2 min-[1400px]:px-2.5 2xl:px-3 py-1.5 rounded-full transition-all whitespace-nowrap ${
                 pathname === "/contact"
                   ? "bg-blue-50 text-blue-600 font-bold"
                   : "hover:text-blue-600 hover:bg-slate-50"

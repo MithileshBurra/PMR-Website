@@ -24,8 +24,8 @@ export default function HospitalPage() {
         {/* Hero Image Card */}
         <div className="relative w-full h-80 sm:h-96 rounded-3xl overflow-hidden shadow-2xl mb-12 border border-gold-brand/30">
           <Image
-            src="/images/hospital_facility.jpg"
-            alt="PMR Hospital ICU and Emergency Center"
+            src="/images/PMR IMAGES/Campus/HomePage_Thumbnail.png"
+            alt="PMRIMS Multispecialty Teaching Hospital Campus"
             fill
             className="object-cover"
           />

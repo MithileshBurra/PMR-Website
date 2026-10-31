@@ -11,7 +11,7 @@ export default function Hero() {
       {/* Background Media Layer - Ambient Image/Video Canvas */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/campus_hero.jpg"
+          src="/images/PMR IMAGES/Campus/HomePage_Thumbnail.png"
           alt="PMRIMS Chevella Campus Architecture"
           fill
           priority

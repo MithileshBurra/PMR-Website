@@ -156,8 +156,8 @@ export default function DualPersonaGrid() {
               {/* Feature Image Frame */}
               <div className="relative w-full h-44 rounded-2xl overflow-hidden mb-8 border border-slate-200">
                 <Image
-                  src="/images/hospital_facility.jpg"
-                  alt="1200 Bed PMR Hospital ICU Unit"
+                  src="/images/PMR IMAGES/Casualty/vlcsnap-2026-02-25-11h36m41s810.png"
+                  alt="1200 Bed PMR Hospital Clinical Care"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
