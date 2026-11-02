@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { 
   Building2, 
@@ -155,6 +156,49 @@ export default function InpatientPage() {
                 </div>
               );
             })}
+          </div>
+        </div>
+
+        {/* Featured IPD Hospital Building Showcase */}
+        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm overflow-hidden">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-100">
+            <div>
+              <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-900 border border-blue-200 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 w-max">
+                <Building2 className="w-3.5 h-3.5 text-blue-600" />
+                Hospital Infrastructure
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-2">
+                Dr. Patnam Mahender Reddy General Hospital — Inpatient (IPD) Wing
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500 font-technical mt-1">
+                State-of-the-art 1200+ bedded inpatient multi-storeyed medical facility located on our lush green Chevella campus
+              </p>
+            </div>
+            <span className="px-3.5 py-1.5 rounded-2xl bg-slate-100 text-slate-800 text-xs font-bold font-mono shrink-0">
+              Main IPD Complex
+            </span>
+          </div>
+
+          <div className="relative w-full aspect-[2.1/1] rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/80 shadow-md group">
+            <Image
+              src="/images/hospital/IPD/ipd_hospital_building.png"
+              alt="Dr. Patnam Mahender Reddy General Hospital - Inpatient Department (IPD) Building"
+              fill
+              className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+              priority
+              sizes="(max-width: 1280px) 100vw, 1280px"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent flex items-end p-6 sm:p-8">
+              <div className="text-white">
+                <span className="text-xs font-bold uppercase tracking-wider text-blue-300">Campus Landmark</span>
+                <h3 className="text-xl sm:text-2xl font-serif font-bold text-white">
+                  PMR General Hospital — IPD Wing
+                </h3>
+                <p className="text-xs text-slate-200 mt-1 max-w-xl font-technical">
+                  Equipped with 1200+ inpatient beds, modular operation theatres, modern intensive care units, 24/7 emergency casualty, and private patient recovery wards.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 

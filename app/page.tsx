@@ -41,7 +41,6 @@ export default function Home() {
             muted={isMuted}
             playsInline
             preload="auto"
-            poster="/images/PMR IMAGES/Campus/HomePage_Thumbnail.png"
             className="w-full h-full object-cover scale-105 opacity-100 transition-opacity duration-1000"
           >
             <source

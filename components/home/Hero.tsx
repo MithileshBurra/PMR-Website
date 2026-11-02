@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, ShieldCheck, Play, Award, GraduationCap, Hospital, Sparkles } from "lucide-react";
@@ -8,15 +7,18 @@ import { ArrowRight, ShieldCheck, Play, Award, GraduationCap, Hospital, Sparkles
 export default function Hero() {
   return (
     <section className="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden bg-emerald-950 text-white">
-      {/* Background Media Layer - Ambient Image/Video Canvas */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/PMR IMAGES/Campus/HomePage_Thumbnail.png"
-          alt="PMRIMS Chevella Campus Architecture"
-          fill
-          priority
-          className="object-cover object-center opacity-35 scale-105 transition-transform duration-10000 animate-pulse-slow"
-        />
+      {/* Background Media Layer - Video Canvas Only */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="w-full h-full object-cover scale-105 opacity-40 transition-opacity duration-1000"
+        >
+          <source src="/videos/hero_drone.mp4" type="video/mp4" />
+        </video>
         {/* Dynamic Dark Gradient Overlays */}
         <div className="absolute inset-0 bg-gradient-to-t from-emerald-950 via-emerald-950/75 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-950 via-emerald-950/80 to-transparent" />
