@@ -243,7 +243,7 @@ export default function Home() {
                       src={item.image}
                       alt={item.title}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className={`object-cover ${item.imagePosition || "object-center"} group-hover:scale-105 transition-transform duration-500`}
                     />
                   </div>
 

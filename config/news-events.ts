@@ -5,6 +5,7 @@ export interface NewsItem {
   title: string;
   excerpt: string;
   image: string;
+  imagePosition?: string;
   link: string;
 }
 
@@ -24,7 +25,8 @@ export const newsEventsData: NewsItem[] = [
     date: "10 Mar 2026",
     title: "PMRIMS Conducts Free Medical Camps Twice Weekly",
     excerpt: "In keeping with its commitment to community health, PMRIMS conducts free medical outreach camps twice every week across Chevella and Rangareddy district.",
-    image: "/images/PMR IMAGES/OP/vlcsnap-2026-02-25-11h56m04s783.png",
+    image: "/images/pmrims_medical_camps_bus.jpg",
+    imagePosition: "object-[center_42%]",
     link: "/gallery",
   },
   {

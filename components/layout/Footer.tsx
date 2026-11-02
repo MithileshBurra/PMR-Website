@@ -54,7 +54,6 @@ export default function Footer() {
           </p>
 
           <div className="pt-2 flex flex-wrap gap-2 text-[11px] font-semibold text-gold-brand">
-            <span className="px-2.5 py-1 rounded bg-sriher-blue/40 border border-gold-brand/20">NAAC Grade A++</span>
             <span className="px-2.5 py-1 rounded bg-sriher-blue/40 border border-gold-brand/20">NMC Recognised</span>
             <span className="px-2.5 py-1 rounded bg-sriher-blue/40 border border-gold-brand/20">KNRUHS Affiliated</span>
           </div>
