@@ -1,6 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { 
   ShieldCheck, 
   HeartPulse, 
@@ -10,10 +12,35 @@ import {
   AlertTriangle, 
   Activity, 
   Stethoscope, 
-  Truck 
+  Truck,
+  ArrowLeft,
+  Maximize2,
+  X,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 
+const CASUALTY_PHOTOS = [
+  {
+    src: "/images/hospital/casualty/casualty_entrance.jpg",
+    alt: "PMRIMS Casualty & Emergency Medicine Department Entrance",
+  },
+  {
+    src: "/images/hospital/casualty/casualty_ambulances.jpg",
+    alt: "24/7 Advanced Emergency Cardiac Ambulances",
+  },
+  {
+    src: "/images/hospital/casualty/casualty_doctors_team.png",
+    alt: "Emergency Doctors & Clinical Faculty Attending Casualty Patient",
+  },
+  {
+    src: "/images/hospital/casualty/casualty_patient_ward.jpg",
+    alt: "Casualty Acute Observation & Monitoring Bed",
+  },
+];
+
 export default function CasualtyPage() {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   return (
     <div className="w-full bg-transparent min-h-screen text-slate-800 font-technical">
       {/* Hero Banner */}
@@ -103,7 +130,110 @@ export default function CasualtyPage() {
             </div>
           </div>
         </div>
+
+        {/* Casualty Photo Gallery */}
+        <div className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-institutional mt-12 mb-10">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-100">
+            <div>
+              <span className="px-3 py-1 rounded-full bg-red-50 text-red-900 border border-red-200 text-xs font-bold uppercase tracking-wider">
+                Photo Gallery
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-2">
+                Casualty & Emergency Department Facilities
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500 font-technical mt-1">
+                Visual tour of our emergency department entrance, triage resuscitation wards, clinical medical team, and 24/7 ambulance fleet
+              </p>
+            </div>
+            <span className="px-3.5 py-1.5 rounded-2xl bg-slate-100 text-slate-800 text-xs font-bold font-mono shrink-0">
+              4 Facility Photos
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            {CASUALTY_PHOTOS.map((img, idx) => (
+              <div 
+                key={idx} 
+                onClick={() => setLightboxIndex(idx)}
+                className="group rounded-3xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 hover:shadow-xl transition-all duration-300 cursor-pointer relative"
+              >
+                <div className="overflow-hidden aspect-[16/10] relative">
+                  <Image 
+                    src={img.src} 
+                    alt={img.alt} 
+                    fill
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" 
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span className="p-3 rounded-full bg-white/90 text-slate-900 shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                      <Maximize2 className="w-5 h-5 text-red-600" />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Back Link */}
+        <div className="mt-8">
+          <Link href="/hospital" className="inline-flex items-center gap-1.5 text-xs font-bold text-red-600 hover:text-red-800">
+            <ArrowLeft className="w-4 h-4" /> Back to Hospital Facilities
+          </Link>
+        </div>
       </section>
+
+      {/* Lightbox Modal (pure photo viewer, NO text below photo) */}
+      {lightboxIndex !== null && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
+          onClick={() => setLightboxIndex(null)}
+        >
+          <div 
+            className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setLightboxIndex(null)}
+              className="absolute -top-12 right-0 p-2 text-white/80 hover:text-white transition-colors"
+              aria-label="Close photo preview"
+            >
+              <X className="w-8 h-8" />
+            </button>
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={() => setLightboxIndex((prev) => (prev! > 0 ? prev! - 1 : CASUALTY_PHOTOS.length - 1))}
+              className="absolute left-2 sm:-left-12 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition-colors z-10"
+              aria-label="Previous photo"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+
+            <button
+              onClick={() => setLightboxIndex((prev) => (prev! < CASUALTY_PHOTOS.length - 1 ? prev! + 1 : 0))}
+              className="absolute right-2 sm:-right-12 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition-colors z-10"
+              aria-label="Next photo"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+
+            {/* Photo Container */}
+            <div className="relative w-full aspect-[16/10] max-h-[80vh] rounded-2xl overflow-hidden shadow-2xl bg-black">
+              <Image
+                src={CASUALTY_PHOTOS[lightboxIndex].src}
+                alt={CASUALTY_PHOTOS[lightboxIndex].alt}
+                fill
+                className="object-contain"
+                sizes="(max-width: 1280px) 100vw, 1280px"
+                priority
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
