@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { 
   Stethoscope, 
   CheckCircle2, 
@@ -33,6 +34,37 @@ export default function NursingPage() {
           <p className="text-slate-600 font-technical mt-2 text-sm sm:text-base max-w-3xl leading-relaxed">
             Recognised by the Indian Nursing Council (INC), New Delhi & Telangana Nursing Council. Affiliated with Kaloji Narayana Rao University of Health Sciences (KNRUHS). An exclusive premier women&apos;s institution empowering female healthcare professionals with rigorous clinical training, life-support competencies, and academic scholarship.
           </p>
+        </div>
+
+        {/* Nursing College Campus Building Showcase */}
+        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-institutional mb-10">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <div>
+              <span className="px-3 py-1 rounded-md bg-emerald-50 text-emerald-900 font-bold text-xs uppercase tracking-wider">
+                Dedicated Campus Facility
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-emerald-brand mt-2">
+                Dr. PMR Nursing College Campus
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500 font-technical mt-1">
+                Modern multi-storeyed academic and clinical training complex situated on the PMRIMS Chevella campus
+              </p>
+            </div>
+            <span className="px-3.5 py-1.5 rounded-2xl bg-emerald-50 text-emerald-900 border border-emerald-200 text-xs font-bold font-mono shrink-0">
+              Nursing College Complex
+            </span>
+          </div>
+
+          <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/80 shadow-md group">
+            <Image
+              src="/images/allied-sciences/nursing/pmr_nursing_college_building.jpg"
+              alt="Dr. PMR Nursing College Campus Building"
+              fill
+              className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+              priority
+              sizes="(max-width: 1280px) 100vw, 1280px"
+            />
+          </div>
         </div>
 
         {/* 4 Core Institutional Pillars */}

@@ -57,7 +57,7 @@ export default function ExecutiveLeadership() {
             <div className="relative w-full aspect-[3/4] min-h-[440px] sm:min-h-[520px] rounded-3xl overflow-hidden shadow-2xl border border-slate-200 bg-white p-2.5 group">
               <div className="relative w-full h-full rounded-xl overflow-hidden">
                 <Image
-                  src="/images/chairman.jpg"
+                  src="/images/chairman.png"
                   alt="Dr. Patnam Mahender Reddy Garu - Chairman"
                   fill
                   className="object-cover object-top group-hover:scale-105 transition-transform duration-700"

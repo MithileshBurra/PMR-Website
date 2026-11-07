@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { 
   BookOpen, 
@@ -15,16 +17,26 @@ import {
   ShieldCheck, 
   FileText,
   PhoneCall,
-  Camera
+  Camera,
+  Maximize2,
+  X,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 
 const LIBRARY_PHOTOS = [
   { src: "/images/facilities/library/DSC06765.JPG", title: "Central Medical Library Reading Hall & Book Stacks" },
   { src: "/images/facilities/library/DSC06767.JPG", title: "Quiet Individual Study Desks & Journal Archives" },
-  { src: "/images/facilities/library/DSC06769.JPG", title: "Reference Volumes & Clinical Literature Section" }
+  { src: "/images/facilities/library/DSC06769.JPG", title: "Reference Volumes & Clinical Literature Section" },
+  { src: "/images/facilities/library/library_book_stacks_1.png", title: "Medical Textbooks & Reference Book Stacks" },
+  { src: "/images/facilities/library/library_book_stacks_2.png", title: "Clinical Literature Archives & Book Stacks" },
+  { src: "/images/facilities/library/library_study_hall_1.png", title: "Air-Conditioned Reading Hall & Study Desks" },
+  { src: "/images/facilities/library/library_study_hall_2.png", title: "Spacious Student Study Hall & Reading Area" },
+  { src: "/images/facilities/library/library_reading_room_3.png", title: "Central Medical Library Study Carrels & Reading Tables" }
 ];
 
 export default function LibraryPage() {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const LIBRARY_FEATURES = [
     {
       icon: BookOpen,
@@ -141,19 +153,26 @@ export default function LibraryPage() {
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {LIBRARY_PHOTOS.map((img, idx) => (
-              <div key={idx} className="group rounded-3xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 hover:shadow-xl transition-all duration-300">
-                <div className="overflow-hidden aspect-[16/10]">
-                  <img 
+              <div 
+                key={idx} 
+                onClick={() => setLightboxIndex(idx)}
+                className="group rounded-3xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 hover:shadow-xl transition-all duration-300 cursor-pointer relative"
+              >
+                <div className="overflow-hidden aspect-[16/10] relative">
+                  <Image 
                     src={img.src} 
                     alt={img.title} 
+                    fill
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" 
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
-                </div>
-                <div className="p-4 sm:p-5 text-sm text-slate-800 bg-white font-semibold border-t border-slate-100 flex items-center gap-2.5">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-700 shrink-0" />
-                  <span>{img.title}</span>
+                  <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span className="p-3 rounded-full bg-white/90 text-slate-900 shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                      <Maximize2 className="w-5 h-5 text-emerald-700" />
+                    </span>
+                  </div>
                 </div>
               </div>
             ))}
@@ -236,6 +255,57 @@ export default function LibraryPage() {
           <ArrowLeft className="w-4 h-4" /> Back to Facilities Overview
         </Link>
       </div>
+
+      {/* Lightbox Modal (pure photo viewer, NO text below photo) */}
+      {lightboxIndex !== null && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
+          onClick={() => setLightboxIndex(null)}
+        >
+          <div 
+            className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setLightboxIndex(null)}
+              className="absolute -top-12 right-0 p-2 text-white/80 hover:text-white transition-colors"
+              aria-label="Close photo preview"
+            >
+              <X className="w-8 h-8" />
+            </button>
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={() => setLightboxIndex((prev) => (prev! > 0 ? prev! - 1 : LIBRARY_PHOTOS.length - 1))}
+              className="absolute left-2 sm:-left-12 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition-colors z-10"
+              aria-label="Previous photo"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+
+            <button
+              onClick={() => setLightboxIndex((prev) => (prev! < LIBRARY_PHOTOS.length - 1 ? prev! + 1 : 0))}
+              className="absolute right-2 sm:-right-12 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition-colors z-10"
+              aria-label="Next photo"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+
+            {/* Photo Container */}
+            <div className="relative w-full aspect-[16/10] max-h-[80vh] rounded-2xl overflow-hidden shadow-2xl bg-black">
+              <Image
+                src={LIBRARY_PHOTOS[lightboxIndex].src}
+                alt={LIBRARY_PHOTOS[lightboxIndex].title}
+                fill
+                className="object-contain"
+                sizes="(max-width: 1280px) 100vw, 1280px"
+                priority
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

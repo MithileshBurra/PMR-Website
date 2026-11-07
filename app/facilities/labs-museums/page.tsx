@@ -107,10 +107,6 @@ export default function LabsMuseumsPage() {
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" 
                   />
                 </div>
-                <div className="p-4 sm:p-5 text-sm sm:text-base text-slate-800 bg-white font-semibold border-t border-slate-100 flex items-center gap-2.5">
-                  <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0" />
-                  <span>{img.title}</span>
-                </div>
               </div>
             ))}
           </div>

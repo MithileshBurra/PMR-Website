@@ -41,7 +41,7 @@ export default function Home() {
             muted={isMuted}
             playsInline
             preload="auto"
-            className="w-full h-full object-cover scale-105 opacity-100 transition-opacity duration-1000"
+            className="w-full h-full object-cover opacity-100 transition-opacity duration-1000"
           >
             <source
               src="/videos/hero_drone.mp4"
