@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { 
   Utensils, 
@@ -14,10 +16,28 @@ import {
   Users, 
   ArrowLeft, 
   PhoneCall,
-  Apple
+  Apple,
+  Camera,
+  Maximize2,
+  X,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 
+const CANTEEN_PHOTOS = [
+  { src: "/images/Canteen/PHOTO-2026-11-07-12-32-51.jpg", title: "Two-Storey Cafe Oasis Building & Campus Trees" },
+  { src: "/images/Canteen/PHOTO-2026-11-07-12-32-48.jpg", title: "Cafe Oasis Modern Cafeteria Exterior" },
+  { src: "/images/Canteen/PHOTO-2026-11-07-12-32-49%203.jpg", title: "Front Entrance & Cafe Oasis Facade" },
+  { src: "/images/Canteen/PHOTO-2026-11-07-12-32-49.jpg", title: "Air-Conditioned Indoor Dining Lounge" },
+  { src: "/images/Canteen/PHOTO-2026-11-07-12-32-49%202.jpg", title: "Open-Air Terrace Cafeteria & Mezzanine" },
+  { src: "/images/Canteen/PHOTO-2026-11-07-12-32-49%204.jpg", title: "Shaded Outdoor Dining Deck & Fans" },
+  { src: "/images/Canteen/PHOTO-2026-11-07-12-32-50%202.jpg", title: "Spacious Student Seating & Dining Benches" },
+  { src: "/images/Canteen/PHOTO-2026-11-07-12-32-50.jpg", title: "Terrace Dining with Lush Green Tree Views" },
+  { src: "/images/Canteen/PHOTO-2026-11-07-12-32-48%202.jpg", title: "Cafe Oasis Food & Friends Campus Mural" }
+];
+
 export default function CanteenPage() {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const MESS_FEATURES = [
     {
       icon: Apple,
@@ -199,6 +219,52 @@ export default function CanteenPage() {
           </div>
         </div>
 
+        {/* Campus Canteen Photo Gallery */}
+        <div className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-institutional mb-14">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-100">
+            <div>
+              <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-900 border border-emerald-200 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 w-max">
+                <Camera className="w-3.5 h-3.5 text-emerald-700" />
+                Photo Gallery
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-emerald-brand mt-2">
+                Cafe Oasis & Campus Dining Facility
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500 font-technical mt-1">
+                Visual glimpses of our open-air terrace cafeteria, student dining spaces, and campus cafeteria ambiance
+              </p>
+            </div>
+            <span className="px-3.5 py-1.5 rounded-2xl bg-slate-100 text-slate-800 text-xs font-bold font-mono shrink-0">
+              {CANTEEN_PHOTOS.length} Canteen Photos
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            {CANTEEN_PHOTOS.map((img, idx) => (
+              <div 
+                key={idx} 
+                onClick={() => setLightboxIndex(idx)}
+                className="group rounded-3xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 hover:shadow-xl transition-all duration-300 cursor-pointer relative"
+              >
+                <div className="overflow-hidden aspect-[4/3] sm:aspect-[16/10] relative">
+                  <Image 
+                    src={img.src} 
+                    alt={img.title} 
+                    fill
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" 
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span className="p-3 rounded-full bg-white/90 text-slate-900 shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                      <Maximize2 className="w-5 h-5 text-emerald-700" />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Dining Administration & Helpdesk Callout */}
         <div className="bg-emerald-950 text-white rounded-3xl p-8 sm:p-10 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-12">
           <div className="space-y-2 max-w-2xl">
@@ -230,6 +296,57 @@ export default function CanteenPage() {
           <ArrowLeft className="w-4 h-4" /> Back to Facilities Overview
         </Link>
       </div>
+
+      {/* Lightbox Modal (pure photo viewer, NO text below photo) */}
+      {lightboxIndex !== null && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
+          onClick={() => setLightboxIndex(null)}
+        >
+          <div 
+            className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setLightboxIndex(null)}
+              className="absolute -top-12 right-0 p-2 text-white/80 hover:text-white transition-colors"
+              aria-label="Close photo preview"
+            >
+              <X className="w-8 h-8" />
+            </button>
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={() => setLightboxIndex((prev) => (prev! > 0 ? prev! - 1 : CANTEEN_PHOTOS.length - 1))}
+              className="absolute left-2 sm:-left-12 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition-colors z-10"
+              aria-label="Previous photo"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+
+            <button
+              onClick={() => setLightboxIndex((prev) => (prev! < CANTEEN_PHOTOS.length - 1 ? prev! + 1 : 0))}
+              className="absolute right-2 sm:-right-12 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition-colors z-10"
+              aria-label="Next photo"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+
+            {/* Photo Container */}
+            <div className="relative w-full aspect-[16/10] max-h-[80vh] rounded-2xl overflow-hidden shadow-2xl bg-black">
+              <Image
+                src={CANTEEN_PHOTOS[lightboxIndex].src}
+                alt={CANTEEN_PHOTOS[lightboxIndex].title}
+                fill
+                className="object-contain"
+                sizes="(max-width: 1280px) 100vw, 1280px"
+                priority
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

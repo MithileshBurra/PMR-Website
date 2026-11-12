@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 
 const LIBRARY_PHOTOS = [
+  { src: "/images/facilities/library/central_library_building.jpg", title: "PMRIMS Central Library & Academic Complex Building" },
   { src: "/images/facilities/library/DSC06765.JPG", title: "Central Medical Library Reading Hall & Book Stacks" },
   { src: "/images/facilities/library/DSC06767.JPG", title: "Quiet Individual Study Desks & Journal Archives" },
   { src: "/images/facilities/library/DSC06769.JPG", title: "Reference Volumes & Clinical Literature Section" },
@@ -145,7 +146,7 @@ export default function LibraryPage() {
                 PMRIMS Central Library & Study Halls
               </h2>
               <p className="text-xs sm:text-sm text-slate-500 font-technical mt-1">
-                Visual tour of our spacious air-conditioned reading halls, medical book stacks, and individual study carrels
+                Visual tour of our central library building, air-conditioned reading halls, medical book stacks, and individual study carrels
               </p>
             </div>
             <span className="px-3.5 py-1.5 rounded-2xl bg-slate-100 text-slate-800 text-xs font-bold font-mono shrink-0">
@@ -158,15 +159,18 @@ export default function LibraryPage() {
               <div 
                 key={idx} 
                 onClick={() => setLightboxIndex(idx)}
-                className="group rounded-3xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 hover:shadow-xl transition-all duration-300 cursor-pointer relative"
+                className={`group rounded-3xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 hover:shadow-xl transition-all duration-300 cursor-pointer relative ${
+                  idx === 0 ? "md:col-span-2" : ""
+                }`}
               >
-                <div className="overflow-hidden aspect-[16/10] relative">
+                <div className={`overflow-hidden relative ${idx === 0 ? "aspect-[16/9]" : "aspect-[16/10]"}`}>
                   <Image 
                     src={img.src} 
                     alt={img.title} 
                     fill
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" 
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    sizes={idx === 0 ? "(max-width: 1280px) 100vw, 1280px" : "(max-width: 768px) 100vw, 50vw"}
+                    priority={idx === 0}
                   />
                   <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <span className="p-3 rounded-full bg-white/90 text-slate-900 shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">

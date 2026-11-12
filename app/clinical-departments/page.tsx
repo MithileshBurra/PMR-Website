@@ -4,7 +4,6 @@ import {
   Stethoscope, 
   CheckCircle2, 
   GraduationCap,
-  Bed,
   Brain,
   Eye,
   Activity,
@@ -212,13 +211,6 @@ export default function ClinicalDepartmentsPage() {
                 className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
-                  {/* Bed Count Badge */}
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold flex items-center gap-1.5">
-                      <Bed className="w-3.5 h-3.5 text-blue-600" /> {dept.bedCount}
-                    </span>
-                  </div>
-
                   <div className="flex items-center gap-3 mb-4">
                     <div className="p-3 rounded-2xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                       <IconComponent className="w-6 h-6" />
