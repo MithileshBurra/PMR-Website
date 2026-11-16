@@ -370,6 +370,44 @@ export const SITE_DOCUMENTS: DocumentEntry[] = [
     pdfUrl: "/documents/admissions/ug/B-C-BONDS-2026-27.pdf",
     fileSize: "530 KB",
     description: "Mandatory bond paper formats and bank guarantee declarations for Cat-B & Cat-C candidates."
+  },
+
+  // =========================================================================
+  // 4. PG ADMISSION INSTRUCTIONS, FEES & BONDS - 3 PDFs
+  // Location: public/documents/admissions/pg/
+  // =========================================================================
+  {
+    id: "pg-adm-clinical-cat-a",
+    title: "PG (Clinical) Category-A (Convener Quota) Fee Details, Documents & Bonds",
+    category: "pg-document",
+    referenceNo: "PMRIMS/PG-ADM/CLINICAL-CAT-A/2026-27",
+    issuedBy: "PMRIMS Admissions Cell & KNRUHS",
+    academicYear: "2026-2027",
+    pdfUrl: "/documents/admissions/pg/PG-Clinical-Cat-A-Convener-Quota-Fee-Documents-Bonds-2026-2027.pdf",
+    fileSize: "548 KB",
+    description: "Official 8-page schedule for PG Clinical Category-A (CQ) admissions: tuition fees (Rs. 7.75 Lakhs), 31 mandatory certificates checklist, service bond, discontinuation bond, and anti-ragging affidavits proforma."
+  },
+  {
+    id: "pg-adm-clinical-cat-bc",
+    title: "PG (Clinical) Category B & C (Management & NRI) Fee Details, Documents & Bonds",
+    category: "pg-document",
+    referenceNo: "PMRIMS/PG-ADM/CLINICAL-CAT-BC/2026-27",
+    issuedBy: "PMRIMS Executive Management & TAFRC",
+    academicYear: "2026-2027",
+    pdfUrl: "/documents/admissions/pg/PG-Clinical-Cat-BC-Management-NRI-Fee-Documents-Bonds-2026-2027.pdf",
+    fileSize: "546 KB",
+    description: "Official 10-page schedule for PG Clinical Cat-B (Management) & Cat-C (NRI) admissions: fee schedule, 29 certificate checklist, bank guarantee proforma, seat blocking declaration, and service bonds."
+  },
+  {
+    id: "pg-adm-pre-para-clinical",
+    title: "PG (Pre & Para-Clinical) Fee Details, Documents & Bonds (Category A, B & C)",
+    category: "pg-document",
+    referenceNo: "PMRIMS/PG-ADM/PRE-PARA/2026-27",
+    issuedBy: "PMRIMS Admissions Cell & KNRUHS",
+    academicYear: "2026-2027",
+    pdfUrl: "/documents/admissions/pg/PG-Pre-Para-Clinical-Cat-ABC-Fee-Documents-Bonds-2026-2027.pdf",
+    fileSize: "545 KB",
+    description: "Official 9-page schedule for Pre-Clinical, Para-Clinical & Broad Specialties: fee matrix across Cat-A, Cat-B & Cat-C, 28 certificate checklist, in-service declaration, and admission bond formats."
   }
 ];
 
