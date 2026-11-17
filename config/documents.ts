@@ -384,8 +384,8 @@ export const SITE_DOCUMENTS: DocumentEntry[] = [
     issuedBy: "PMRIMS Admissions Cell & KNRUHS",
     academicYear: "2026-2027",
     pdfUrl: "/documents/admissions/pg/PG-Clinical-Cat-A-Convener-Quota-Fee-Documents-Bonds-2026-2027.pdf",
-    fileSize: "548 KB",
-    description: "Official 8-page schedule for PG Clinical Category-A (CQ) admissions: tuition fees (Rs. 7.75 Lakhs), 31 mandatory certificates checklist, service bond, discontinuation bond, and anti-ragging affidavits proforma."
+    fileSize: "558 KB",
+    description: "Official 9-page schedule for PG Clinical Category-A (CQ) admissions: tuition fees (Rs. 7.75 Lakhs), mandatory certificates checklist, service bond, discontinuation bond, anti-ragging affidavits, and Annexure-VI undertaking."
   },
   {
     id: "pg-adm-clinical-cat-bc",
@@ -395,8 +395,8 @@ export const SITE_DOCUMENTS: DocumentEntry[] = [
     issuedBy: "PMRIMS Executive Management & TAFRC",
     academicYear: "2026-2027",
     pdfUrl: "/documents/admissions/pg/PG-Clinical-Cat-BC-Management-NRI-Fee-Documents-Bonds-2026-2027.pdf",
-    fileSize: "546 KB",
-    description: "Official 10-page schedule for PG Clinical Cat-B (Management) & Cat-C (NRI) admissions: fee schedule, 29 certificate checklist, bank guarantee proforma, seat blocking declaration, and service bonds."
+    fileSize: "555 KB",
+    description: "Official 11-page schedule for PG Clinical Cat-B (Management) & Cat-C (NRI) admissions: fee schedule, certificate checklist, bank guarantee proforma, seat blocking declaration, service bonds, and Annexure-VI undertaking."
   },
   {
     id: "pg-adm-pre-para-clinical",
@@ -406,8 +406,8 @@ export const SITE_DOCUMENTS: DocumentEntry[] = [
     issuedBy: "PMRIMS Admissions Cell & KNRUHS",
     academicYear: "2026-2027",
     pdfUrl: "/documents/admissions/pg/PG-Pre-Para-Clinical-Cat-ABC-Fee-Documents-Bonds-2026-2027.pdf",
-    fileSize: "545 KB",
-    description: "Official 9-page schedule for Pre-Clinical, Para-Clinical & Broad Specialties: fee matrix across Cat-A, Cat-B & Cat-C, 28 certificate checklist, in-service declaration, and admission bond formats."
+    fileSize: "551 KB",
+    description: "Official 10-page schedule for Pre-Clinical, Para-Clinical & Broad Specialties: fee matrix across Cat-A, Cat-B & Cat-C, certificate checklist, in-service declaration, admission bonds, and Annexure-VI undertaking."
   }
 ];
 
