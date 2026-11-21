@@ -104,19 +104,51 @@ export default function CareersPage() {
         `${resumeLinkText}\n` +
         `Submitted via PMRIMS Recruitment Portal.`;
 
-      const finalWaUrl = `https://wa.me/918688315739?text=${encodeURIComponent(waText)}`;
+      // Sanitize recipient WhatsApp: ensure 918688315739 and reject legacy 8074485411
+      const rawResWa = (resData.recipientWhatsApp || "918688315739").replace(/\D/g, "");
+      let targetWa = "918688315739";
+      if (rawResWa && !rawResWa.includes("8074485411") && rawResWa.length >= 10) {
+        targetWa = rawResWa.startsWith("91") ? rawResWa : `91${rawResWa}`;
+      }
+
+      const finalWaUrl = `https://wa.me/${targetWa}?text=${encodeURIComponent(waText)}`;
 
       if (response.ok && resData.success) {
         setSubmitStatus({
           success: true,
           message: resData.message || "Your application has been submitted & saved successfully!",
-          whatsappUrl: resData.whatsappUrl || finalWaUrl
+          whatsappUrl: finalWaUrl
         });
 
-        // Trigger WhatsApp location navigation to bypass popup blocker
-        setTimeout(() => {
-          window.location.href = resData.whatsappUrl || finalWaUrl;
-        }, 300);
+        // 1. If Web Share API supports file attachments (Mobile Android / iOS Safari), share the actual PDF directly!
+        let sharedDirectly = false;
+        if (
+          resumeFile &&
+          typeof navigator !== "undefined" &&
+          navigator.canShare &&
+          navigator.canShare({ files: [resumeFile] })
+        ) {
+          try {
+            await navigator.share({
+              title: `PMRIMS Doctor Faculty Application - ${formData.fullName}`,
+              text: waText,
+              files: [resumeFile]
+            });
+            sharedDirectly = true;
+          } catch (shareErr: any) {
+            // If user closed share dialog, count as handled
+            if (shareErr.name === "AbortError") {
+              sharedDirectly = true;
+            }
+          }
+        }
+
+        // 2. If Web Share not supported or skipped (Desktop WhatsApp Web), navigate to WhatsApp Click-to-Chat
+        if (!sharedDirectly) {
+          setTimeout(() => {
+            window.location.href = finalWaUrl;
+          }, 400);
+        }
 
         setFormData({
           fullName: "",

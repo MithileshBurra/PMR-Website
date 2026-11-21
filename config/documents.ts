@@ -9,8 +9,8 @@
 export interface DocumentEntry {
   id: string;
   title: string;
-  category: "ug-permission" | "pg-permission" | "ug-document" | "pg-document" | "gazette";
-  subCategory?: "clinical" | "pre-para" | "renewal" | "recognition" | "lop";
+  category: "ug-permission" | "pg-permission" | "ug-document" | "pg-document" | "gazette" | "collaboration";
+  subCategory?: "clinical" | "pre-para" | "renewal" | "recognition" | "lop" | "international";
   referenceNo?: string;
   issuedBy?: string;
   academicYear?: string;
@@ -22,9 +22,35 @@ export interface DocumentEntry {
 
 export const SITE_DOCUMENTS: DocumentEntry[] = [
   // =========================================================================
-  // 1. UG PERMISSIONS (NMC & GOVT ORDERS) - 9 PDFs
+  // 1. UG PERMISSIONS (NMC & GOVT ORDERS) - 10 PDFs
   // Location: public/documents/permissions/ug/
   // =========================================================================
+  {
+    id: "ug-perm-lop-2026-27",
+    title: "NMC Letter of Permission (LoP) - Batch (2026-27)",
+    category: "ug-permission",
+    subCategory: "lop",
+    referenceNo: "No.M-21011/Increase/29/2026-MARB/NMC (8413075)",
+    issuedBy: "Medical Assessment & Rating Board (MARB), NMC",
+    academicYear: "2026-2027",
+    seats: "250 Seats",
+    pdfUrl: "/documents/permissions/ug/NMC-LOP-MBBS-Batch-2026-27.pdf",
+    fileSize: "1.9 MB",
+    description: "Official Letter of Permission (LoP) issued in compliance with 1st Appeal Committee decision for increase in MBBS intake from 200 to 250 seats for Batch (2026-27)."
+  },
+  {
+    id: "ug-perm-lop-2025-26",
+    title: "NMC Letter of Permission (LoP) - Batch (2025-26)",
+    category: "ug-permission",
+    subCategory: "lop",
+    referenceNo: "No. N-22011/120/2025-AssessmentCell/MARB(8342556)",
+    issuedBy: "Medical Assessment & Rating Board (MARB), NMC",
+    academicYear: "2025-2026",
+    seats: "200 Seats",
+    pdfUrl: "/documents/permissions/ug/NMC-LOP-MBBS-Batch-2025-26.pdf",
+    fileSize: "643 KB",
+    description: "Official Letter of Permission (LoP) issued in compliance with 1st Appeal Committee decision for increase in MBBS intake from 150 to 200 seats for Batch (2025-26)."
+  },
   {
     id: "ug-perm-recognition-2024",
     title: "NMC MBBS Recognition Order (2024-2025)",
@@ -120,18 +146,6 @@ export const SITE_DOCUMENTS: DocumentEntry[] = [
     pdfUrl: "/documents/permissions/ug/LOP-Ist-appeal-Dr.-Patnam-Mahender-Reddy-Institute-of-Medical-Sciences-2.pdf",
     fileSize: "115 KB",
     description: "NMC 1st Appeal Permission Confirmation Order."
-  },
-  {
-    id: "ug-perm-lop-supplementary",
-    title: "NMC Supplementary LOP Document",
-    category: "ug-permission",
-    subCategory: "lop",
-    referenceNo: "NMC/UG/LOP-SUPP/PMRIMS",
-    issuedBy: "UGMEB, National Medical Commission",
-    academicYear: "Supplementary Order",
-    pdfUrl: "/documents/permissions/ug/Dr.-Patnam-Mahender-Reddy-Institute-LoP-2.pdf",
-    fileSize: "642 KB",
-    description: "Supplementary Statutory LOP Order Document."
   },
 
   // =========================================================================
@@ -408,6 +422,23 @@ export const SITE_DOCUMENTS: DocumentEntry[] = [
     pdfUrl: "/documents/admissions/pg/PG-Pre-Para-Clinical-Cat-ABC-Fee-Documents-Bonds-2026-2027.pdf",
     fileSize: "551 KB",
     description: "Official 10-page schedule for Pre-Clinical, Para-Clinical & Broad Specialties: fee matrix across Cat-A, Cat-B & Cat-C, certificate checklist, in-service declaration, admission bonds, and Annexure-VI undertaking."
+  },
+
+  // =========================================================================
+  // 5. GLOBAL & INTERNATIONAL COLLABORATIONS - 1 PDF
+  // Location: public/documents/collaborations/
+  // =========================================================================
+  {
+    id: "mou-uab-usa-2026",
+    title: "MOU - University of Alabama at Birmingham (UAB), USA & Dr. PMRIMS",
+    category: "collaboration",
+    subCategory: "international",
+    referenceNo: "UAB Contract # 283648",
+    issuedBy: "The Board of Trustees of the University of Alabama (UAB) & Dr. PMRIMS",
+    academicYear: "2026-2031 (5-Year Renewable Term)",
+    pdfUrl: "/documents/collaborations/UAB-PMRIMS-International-MOU-2026.pdf",
+    fileSize: "240 KB",
+    description: "Official Memorandum of Understanding establishing formal international affiliation for collaborative medical research, student clinical electives, faculty academic exchange, joint conferences, and technology transfer between UAB, USA and Dr. PMRIMS."
   }
 ];
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ADMISSIONS_CONFIG } from "@/config/admissions-docs";
-import { ShieldCheck, GraduationCap, ArrowRight, CheckCircle2, Phone, Calendar } from "lucide-react";
+import { ShieldCheck, GraduationCap, ArrowRight, CheckCircle2, Phone, Calendar, Globe2 } from "lucide-react";
 
 export default function UGSeatMatrixPage() {
   return (
@@ -81,6 +81,32 @@ export default function UGSeatMatrixPage() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Global Academic Exposure: UAB USA */}
+        <div className="mb-10 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-sriher-navy via-slate-900 to-sriher-blue text-white border-2 border-gold-brand/40 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-white/10 border border-gold-brand/40 flex items-center justify-center shrink-0 text-gold-brand mt-1 backdrop-blur-sm">
+              <Globe2 className="w-6 h-6 animate-pulse" />
+            </div>
+            <div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-950/70 text-blue-200 border border-blue-400/30 text-[10px] font-extrabold uppercase tracking-wider mb-1.5">
+                Global Clinical & Research Exposure
+              </div>
+              <h3 className="text-xl sm:text-2xl font-serif font-bold text-white">
+                Academic Affiliation with <span className="text-gold-brand italic font-normal">University of Alabama at Birmingham (UAB), USA</span>
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-200 font-technical mt-1.5 leading-relaxed max-w-2xl">
+                PMRIMS MBBS undergraduates benefit from bilateral international cooperation encompassing academic exchanges, faculty development, collaborative clinical research, and global scientific conferences.
+              </p>
+            </div>
+          </div>
+          <Link
+            href="/collaborations"
+            className="px-6 py-3 rounded-xl bg-gold-brand hover:bg-gold-muted text-sriher-navy font-extrabold text-xs uppercase tracking-wider flex items-center gap-2 shadow-gold-glow shrink-0 transition-transform active:scale-95"
+          >
+            Explore UAB Collaboration <ArrowRight className="w-4 h-4 text-sriher-navy" />
+          </Link>
         </div>
 
         {/* Admissions Help Desk Box */}

@@ -112,7 +112,13 @@ export async function POST(request: Request) {
     saveApplicationToDisk(applicationRecord);
 
     const recipientEmail = process.env.CAREER_EMAIL_RECIPIENT || "mithileshburra@ekluvya.guru";
-    const recipientWhatsApp = process.env.CAREER_WHATSAPP_NUMBER || "918688315739";
+    
+    // Sanitize WhatsApp number: ignore legacy test number (8074485411) and enforce 918688315739
+    const rawEnvWa = (process.env.CAREER_WHATSAPP_NUMBER || "").replace(/\D/g, "");
+    let recipientWhatsApp = "918688315739";
+    if (rawEnvWa && !rawEnvWa.includes("8074485411") && rawEnvWa.length >= 10) {
+      recipientWhatsApp = rawEnvWa.startsWith("91") ? rawEnvWa : `91${rawEnvWa}`;
+    }
 
     // Build WhatsApp message text & URL including direct clickable PDF resume link
     const waText = 

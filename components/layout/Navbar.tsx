@@ -15,7 +15,8 @@ import {
   Clock,
   ShieldCheck,
   FileCheck,
-  FileText
+  FileText,
+  Globe2
 } from "lucide-react";
 
 export default function Navbar() {
@@ -117,12 +118,27 @@ export default function Navbar() {
               </button>
 
               {activeDropdown === "about" && (
-                <div className="absolute top-full left-0 w-64 bg-white/95 backdrop-blur-xl border border-slate-200/80 rounded-3xl shadow-2xl p-4 text-slate-700 grid gap-2 animate-in fade-in duration-200">
+                <div className="absolute top-full left-0 w-72 bg-white/95 backdrop-blur-xl border border-slate-200/80 rounded-3xl shadow-2xl p-4 text-slate-700 grid gap-2 animate-in fade-in duration-200">
                   <div className="text-xs font-bold text-blue-600 uppercase tracking-wider mb-1">
                     Institutional Governance
                   </div>
                   <Link href="/executive-leadership" className="p-2.5 rounded-xl hover:bg-blue-50 hover:text-blue-600 text-sm font-medium transition-all flex items-center justify-between">
                     <span>Executive Leadership</span> <ChevronRight className="w-4 h-4 text-slate-400" />
+                  </Link>
+
+                  <div className="border-t border-slate-100 my-0.5" />
+
+                  <div className="text-xs font-bold text-emerald-700 uppercase tracking-wider mb-1">
+                    Global Affiliations
+                  </div>
+                  <Link href="/collaborations" className="p-2.5 rounded-xl hover:bg-emerald-50 hover:text-emerald-800 text-sm font-medium transition-all flex items-center justify-between group/link">
+                    <span className="flex items-center gap-2">
+                      <Globe2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                      <span className="font-semibold">UAB, USA Collaboration</span>
+                    </span>
+                    <span className="px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[9px] font-extrabold uppercase">
+                      NEW
+                    </span>
                   </Link>
                 </div>
               )}
@@ -507,6 +523,15 @@ export default function Navbar() {
           <div className="xl:hidden bg-white border-t border-slate-100 px-6 py-6 text-slate-800 flex flex-col gap-3 animate-in slide-in-from-top duration-300">
             <Link href="/" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 font-semibold">Home</Link>
             <Link href="/executive-leadership" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 font-semibold">Executive Leadership</Link>
+            <Link href="/collaborations" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 font-bold text-emerald-700 flex items-center justify-between">
+              <span className="flex items-center gap-2">
+                <Globe2 className="w-4 h-4 text-emerald-600" />
+                <span>UAB, USA Collaboration</span>
+              </span>
+              <span className="px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[9px] font-extrabold uppercase">
+                NEW
+              </span>
+            </Link>
             <Link href="/hospital" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 font-semibold text-blue-600">Hospital & OPD</Link>
             <Link href="/hospital/aarogyasri" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 font-semibold text-blue-700">Arogyasree Scheme</Link>
             <Link href="/pre-and-para-departments" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 font-semibold">Pre & Para Clinical Departments</Link>

@@ -53,6 +53,11 @@ export default function UGPermissionsPage() {
                           {doc.academicYear}
                         </span>
                       )}
+                      {doc.seats && (
+                        <span className="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-extrabold uppercase tracking-wide">
+                          {doc.seats}
+                        </span>
+                      )}
                       {doc.subCategory && (
                         <span className="px-2.5 py-0.5 rounded bg-slate-200 text-slate-700 text-[10px] font-bold uppercase">
                           {doc.subCategory}
@@ -65,6 +70,12 @@ export default function UGPermissionsPage() {
                       <span>Ref: {doc.referenceNo}</span>
                       <span>•</span>
                       <span>Issued by: {doc.issuedBy}</span>
+                      {doc.seats && (
+                        <>
+                          <span>•</span>
+                          <span className="font-semibold text-emerald-700">{doc.seats}</span>
+                        </>
+                      )}
                       {doc.fileSize && (
                         <>
                           <span>•</span>

@@ -19,7 +19,9 @@ import {
   Sparkles,
   ChevronRight,
   Volume2,
-  VolumeX
+  VolumeX,
+  Globe2,
+  FileText
 } from "lucide-react";
 import { newsEventsData } from "@/config/news-events";
 import InformationCards from "@/components/home/InformationCards";
@@ -80,6 +82,10 @@ export default function Home() {
               <Sparkles className="w-4 h-4 text-orange-400" />
               Dr. Patnam Mahender Reddy Institute of Medical Sciences
             </span>
+            <span className="text-gold-brand font-extrabold bg-sriher-blue/80 px-3 py-0.5 rounded border border-gold-brand/40 flex items-center gap-1.5 shadow-sm">
+              <Globe2 className="w-3.5 h-3.5 text-gold-brand" />
+              • International MOU: University of Alabama at Birmingham (UAB), USA
+            </span>
             <span className="text-red-400 font-extrabold bg-red-950/80 px-2.5 py-0.5 rounded border border-red-500/30">
               • Admissions Open 2026-27
             </span>
@@ -90,6 +96,10 @@ export default function Home() {
             <span className="text-orange-400 flex items-center gap-2 font-extrabold">
               <Sparkles className="w-4 h-4 text-orange-400" />
               Dr. Patnam Mahender Reddy Institute of Medical Sciences
+            </span>
+            <span className="text-gold-brand font-extrabold bg-sriher-blue/80 px-3 py-0.5 rounded border border-gold-brand/40 flex items-center gap-1.5 shadow-sm">
+              <Globe2 className="w-3.5 h-3.5 text-gold-brand" />
+              • International MOU: University of Alabama at Birmingham (UAB), USA
             </span>
             <span className="text-red-400 font-extrabold bg-red-950/80 px-2.5 py-0.5 rounded border border-red-500/30">
               • Admissions Open 2026-27
@@ -184,6 +194,77 @@ export default function Home() {
               </div>
             </div>
           </Link>
+        </div>
+      </section>
+
+      {/* 2.5 Landmark International Affiliation Showcase: UAB USA & Dr. PMRIMS */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-8 pb-10">
+        <div className="relative rounded-3xl bg-gradient-to-r from-sriher-navy via-sriher-blue to-sriher-navy-dark p-6 sm:p-10 text-white shadow-2xl border-2 border-gold-brand/40 hover:border-gold-brand/60 transition-all duration-300 overflow-hidden group">
+          {/* Subtle Ambient Radial Glows in PMR Blue & Gold */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-gold-brand/15 rounded-full blur-3xl pointer-events-none" />
+          
+          <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div className="max-w-3xl">
+              {/* Bilateral Partnership Pill Badges */}
+              <div className="flex flex-wrap items-center gap-2.5 mb-3.5">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 text-gold-brand border border-gold-brand/40 text-[11px] font-extrabold uppercase tracking-wider backdrop-blur-md shadow-inner">
+                  <Globe2 className="w-3.5 h-3.5 text-gold-brand animate-pulse" />
+                  Global Academic &amp; Research Affiliation
+                </div>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-950/70 text-blue-200 border border-blue-400/30 text-[10px] font-bold uppercase tracking-wider">
+                  <span>🇺🇸 UAB, USA</span>
+                  <span className="text-gold-brand font-black">×</span>
+                  <span>🇮🇳 Dr. PMRIMS</span>
+                </div>
+              </div>
+
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white leading-tight">
+                Academic &amp; Research MOU with{" "}
+                <span className="text-gold-brand italic font-normal">
+                  The University of Alabama at Birmingham (UAB), USA
+                </span>
+              </h2>
+              
+              <p className="text-slate-200 text-xs sm:text-sm font-technical mt-2.5 leading-relaxed">
+                Formal 5-year bilateral agreement (UAB Contract # 283648) fostering joint medical research, student clinical electives, faculty academic exchange, and international scientific symposia between UAB, USA and Dr. PMRIMS.
+              </p>
+              
+              <div className="flex flex-wrap items-center gap-4 sm:gap-6 mt-4 text-xs font-semibold text-slate-100">
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-gold-brand shrink-0" />
+                  <span>Student Exchange &amp; Observerships</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-gold-brand shrink-0" />
+                  <span>Joint Biomedical Research</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-gold-brand shrink-0" />
+                  <span>Faculty Knowledge Transfer</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
+              <Link
+                href="/collaborations"
+                className="px-6 py-3.5 rounded-2xl bg-gold-brand hover:bg-gold-muted text-sriher-navy font-black text-xs uppercase tracking-wider transition-all shadow-lg shadow-gold-brand/20 flex items-center justify-center gap-2 text-center group/btn active:scale-95"
+              >
+                <span>Explore Collaboration</span>
+                <ChevronRight className="w-4 h-4 text-sriher-navy group-hover/btn:translate-x-1 transition-transform" />
+              </Link>
+              <a
+                href="/documents/collaborations/UAB-PMRIMS-International-MOU-2026.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white border border-white/25 font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 text-center backdrop-blur-md active:scale-95"
+              >
+                <FileText className="w-4 h-4 text-gold-brand" />
+                <span>View Signed MOU (PDF)</span>
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 

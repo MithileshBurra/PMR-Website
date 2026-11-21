@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { 
   Microscope, 
   BookOpen, 
@@ -13,6 +14,8 @@ import {
   CheckCircle2, 
   GraduationCap,
   Users,
+  Maximize2,
+  X,
   LucideIcon
 } from "lucide-react";
 
@@ -25,6 +28,9 @@ interface DepartmentInfo {
   labs: string[];
   seats: string;
   icon: LucideIcon;
+  image?: string;
+  imageAlt?: string;
+  imageCaption?: string;
 }
 
 const PRE_AND_PARA_DEPARTMENTS: DepartmentInfo[] = [
@@ -36,7 +42,10 @@ const PRE_AND_PARA_DEPARTMENTS: DepartmentInfo[] = [
     description: "Equipped with a modern cadaveric dissection hall, histology laboratory with binocular microscopes, embryology & osteology museum, and neuroanatomy demonstration rooms.",
     labs: ["Gross Anatomy Dissection Hall", "Histology Research Lab", "Embryology & Genetic Museum", "Demonstration Rooms"],
     seats: "8 PG Seats (MS Anatomy) + 250 MBBS",
-    icon: BookOpen
+    icon: BookOpen,
+    image: "/images/departments/anatomy_dissection_hall.png",
+    imageAlt: "Department of Anatomy - Cadaveric Dissection Hall & Osteology Lab",
+    imageCaption: "Department of Anatomy - Cadaveric Dissection Hall & Osteology Lab"
   },
   {
     id: "biochemistry",
@@ -46,7 +55,10 @@ const PRE_AND_PARA_DEPARTMENTS: DepartmentInfo[] = [
     description: "Integrates fundamental medical biochemistry teaching with the 24/7 NABL-standard Central Clinical Biochemistry Laboratory, semi-automated analyzers, and molecular biology research.",
     labs: ["UG Student Practical Lab", "Central Clinical Biochemistry Lab", "Electrophoresis & Chromatography Room", "Research Lab"],
     seats: "2 PG Seats (MD Biochemistry) + 250 MBBS",
-    icon: FlaskConical
+    icon: FlaskConical,
+    image: "/images/departments/biochemistry_lab.png",
+    imageAlt: "Department of Biochemistry - Central Clinical & Diagnostic Laboratory",
+    imageCaption: "Department of Biochemistry - Central Clinical & Diagnostic Laboratory"
   },
   {
     id: "community-medicine",
@@ -112,6 +124,7 @@ const PRE_AND_PARA_DEPARTMENTS: DepartmentInfo[] = [
 
 export default function PreAndParaDepartmentsPage() {
   const [activeCategory, setActiveCategory] = useState<"All" | "Pre-Clinical" | "Para-Clinical">("All");
+  const [selectedImage, setSelectedImage] = useState<{ src: string; title: string } | null>(null);
 
   const filteredDepts = PRE_AND_PARA_DEPARTMENTS.filter(
     (dept) => activeCategory === "All" || dept.category === activeCategory
@@ -162,7 +175,7 @@ export default function PreAndParaDepartmentsPage() {
               <div
                 key={dept.id}
                 id={dept.id}
-                className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group overflow-hidden"
               >
                 <div>
                   {/* Category Badge */}
@@ -205,11 +218,74 @@ export default function PreAndParaDepartmentsPage() {
                     </div>
                   </div>
                 </div>
+
+                {/* Respective Department Photo Right Below Card Details */}
+                {dept.image && (
+                  <div className="mt-6 pt-6 border-t border-slate-100">
+                    <div 
+                      onClick={() => setSelectedImage({ src: dept.image!, title: dept.imageCaption || `${dept.name} Department Facility` })}
+                      className="relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/80 shadow-md group/photo cursor-pointer"
+                    >
+                      <Image
+                        src={dept.image}
+                        alt={dept.imageAlt || `${dept.name} Facility`}
+                        fill
+                        className="object-cover object-center group-hover/photo:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                      <div className="absolute inset-0 bg-slate-900/10 group-hover/photo:bg-slate-900/0 transition-colors" />
+                      <div className="absolute top-3 right-3 p-1.5 rounded-full bg-slate-900/60 text-white backdrop-blur-sm opacity-80 group-hover/photo:opacity-100 transition-opacity">
+                        <Maximize2 className="w-3.5 h-3.5" />
+                      </div>
+                      {dept.imageCaption && (
+                        <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/85 via-slate-950/40 to-transparent p-3.5 text-white">
+                          <p className="text-xs font-semibold tracking-wide">
+                            {dept.imageCaption}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
               </div>
             );
           })}
         </div>
       </section>
+
+      {/* Lightbox Modal */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8 animate-in fade-in duration-200"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div 
+            className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute -top-12 right-0 p-2 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 rounded-full transition-colors"
+              aria-label="Close image"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black">
+              <Image
+                src={selectedImage.src}
+                alt={selectedImage.title}
+                fill
+                className="object-contain"
+                sizes="(max-width: 1280px) 100vw, 1200px"
+                priority
+              />
+            </div>
+            <p className="text-white text-sm font-semibold mt-4 text-center">
+              {selectedImage.title}
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
