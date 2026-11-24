@@ -20,8 +20,7 @@ import {
   ChevronRight,
   Volume2,
   VolumeX,
-  Globe2,
-  FileText
+  Globe2
 } from "lucide-react";
 import { newsEventsData } from "@/config/news-events";
 import InformationCards from "@/components/home/InformationCards";
@@ -227,7 +226,7 @@ export default function Home() {
               </h2>
               
               <p className="text-slate-200 text-xs sm:text-sm font-technical mt-2.5 leading-relaxed">
-                Formal 5-year bilateral agreement (UAB Contract # 283648) fostering joint medical research, student clinical electives, faculty academic exchange, and international scientific symposia between UAB, USA and Dr. PMRIMS.
+                Formal 5-year bilateral agreement fostering joint medical research, student clinical electives, faculty academic exchange, and international scientific symposia between UAB, USA and Dr. PMRIMS.
               </p>
               
               <div className="flex flex-wrap items-center gap-4 sm:gap-6 mt-4 text-xs font-semibold text-slate-100">
@@ -246,23 +245,28 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
+            <div className="flex flex-col sm:flex-row lg:flex-col items-center lg:items-stretch gap-4 shrink-0">
+              {/* UAB Official Logo Tile */}
+              <div className="bg-white/95 backdrop-blur-md px-5 py-3 rounded-2xl shadow-xl border border-white/40 flex flex-col items-center justify-center text-center w-full max-w-[240px]">
+                <Image
+                  src="/images/collaborations/uab_logo.svg"
+                  alt="The University of Alabama at Birmingham (UAB) Logo"
+                  width={180}
+                  height={75}
+                  className="h-10 sm:h-11 w-auto object-contain"
+                />
+                <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 font-bold mt-1">
+                  Official Global Partner
+                </span>
+              </div>
+
               <Link
                 href="/collaborations"
-                className="px-6 py-3.5 rounded-2xl bg-gold-brand hover:bg-gold-muted text-sriher-navy font-black text-xs uppercase tracking-wider transition-all shadow-lg shadow-gold-brand/20 flex items-center justify-center gap-2 text-center group/btn active:scale-95"
+                className="w-full px-6 py-3.5 rounded-2xl bg-gold-brand hover:bg-gold-muted text-sriher-navy font-black text-xs uppercase tracking-wider transition-all shadow-lg shadow-gold-brand/20 flex items-center justify-center gap-2 text-center group/btn active:scale-95"
               >
                 <span>Explore Collaboration</span>
                 <ChevronRight className="w-4 h-4 text-sriher-navy group-hover/btn:translate-x-1 transition-transform" />
               </Link>
-              <a
-                href="/documents/collaborations/UAB-PMRIMS-International-MOU-2026.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white border border-white/25 font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 text-center backdrop-blur-md active:scale-95"
-              >
-                <FileText className="w-4 h-4 text-gold-brand" />
-                <span>View Signed MOU (PDF)</span>
-              </a>
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FlaskConical, BookOpen, ShieldCheck, Award, Globe2, FileText, ExternalLink, ArrowRight, CheckCircle2 } from "lucide-react";
+import { FlaskConical, BookOpen, ShieldCheck, Award, Globe2, ExternalLink, ArrowRight, CheckCircle2 } from "lucide-react";
 
 export default function ResearchPage() {
   return (
@@ -57,13 +57,13 @@ export default function ResearchPage() {
                 <ArrowRight className="w-4 h-4 text-sriher-navy" />
               </Link>
               <a
-                href="/documents/collaborations/UAB-PMRIMS-International-MOU-2026.pdf"
+                href="https://www.uab.edu/home/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/25 font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 backdrop-blur-md active:scale-95"
               >
-                <FileText className="w-4 h-4 text-gold-brand" />
-                <span>View MOU Document</span>
+                <ExternalLink className="w-4 h-4 text-gold-brand" />
+                <span>Visit UAB Portal</span>
               </a>
             </div>
           </div>

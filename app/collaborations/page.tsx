@@ -1,10 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { 
   Globe2, 
-  FileText, 
-  Download, 
   ExternalLink, 
   GraduationCap, 
   BookOpen, 
@@ -12,17 +11,12 @@ import {
   Users, 
   Award, 
   ShieldCheck, 
-  Calendar, 
-  Building2, 
-  Sparkles, 
   CheckCircle2, 
   ArrowLeft,
-  Share2
+  ChevronRight
 } from "lucide-react";
-import { getDocumentById } from "@/config/documents";
 
 export default function CollaborationsPage() {
-  const mouDoc = getDocumentById("mou-uab-usa-2026");
 
   const SCOPE_POINTS = [
     {
@@ -82,9 +76,6 @@ export default function CollaborationsPage() {
               <Globe2 className="w-3.5 h-3.5 text-blue-600" />
               International Landmark Affiliation • USA &amp; India
             </span>
-            <span className="px-3 py-1 rounded-full bg-amber-50 text-amber-900 border border-amber-300 text-xs font-extrabold uppercase tracking-wider">
-              Active Term: 2026 – 2031 (5-Year Renewable)
-            </span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-slate-900 tracking-tight leading-tight">
@@ -103,54 +94,107 @@ export default function CollaborationsPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               
               {/* Partner 1: UAB USA */}
-              <div className="p-6 sm:p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="px-3 py-1 rounded-full bg-gold-brand/20 text-gold-brand border border-gold-brand/35 text-xs font-bold uppercase tracking-wider">
-                    United States Partner
-                  </span>
-                  <span className="text-xs font-mono text-slate-400">Birmingham, Alabama, USA</span>
+              <div className="p-6 sm:p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="px-3 py-1 rounded-full bg-gold-brand/20 text-gold-brand border border-gold-brand/35 text-xs font-bold uppercase tracking-wider">
+                      United States Partner
+                    </span>
+                    <span className="text-xs font-mono text-slate-400">Birmingham, Alabama, USA</span>
+                  </div>
+
+                  {/* UAB Official Logo */}
+                  <div className="bg-white/95 rounded-2xl px-4 py-2.5 mb-5 inline-block shadow-md">
+                    <Image
+                      src="/images/collaborations/uab_logo.svg"
+                      alt="The University of Alabama at Birmingham (UAB) Official Logo"
+                      width={180}
+                      height={75}
+                      className="h-10 sm:h-12 w-auto object-contain"
+                    />
+                  </div>
+
+                  <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white mb-2">
+                    The University of Alabama at Birmingham (UAB)
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-300 font-technical leading-relaxed mb-4">
+                    A premier world-class public academic medical and research institution, globally celebrated for biomedical innovation, NIH-funded investigations, and the world-renowned UAB Health System &amp; Heersink School of Medicine.
+                  </p>
+                  <div className="space-y-1.5 text-xs text-slate-200">
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-gold-brand shrink-0" />
+                      <span>Graduate School and Global Affairs Directorate</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-gold-brand shrink-0" />
+                      <span>Global Academic &amp; Research Affiliation</span>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white mb-2">
-                  The University of Alabama at Birmingham (UAB)
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-300 font-technical leading-relaxed mb-4">
-                  A premier world-class public academic medical and research institution, globally celebrated for biomedical innovation, NIH-funded investigations, and the world-renowned UAB Health System &amp; Heersink School of Medicine.
-                </p>
-                <div className="space-y-1.5 text-xs text-slate-200">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-gold-brand shrink-0" />
-                    <span>Graduate School and Global Affairs Directorate</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-gold-brand shrink-0" />
-                    <span>UAB Contract Reference: # 283648</span>
-                  </div>
+
+                <div className="mt-6 pt-4 border-t border-white/10">
+                  <a
+                    href="https://www.uab.edu/home/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-xs font-bold text-gold-brand hover:text-white transition-colors"
+                  >
+                    <span>Visit Official UAB Website (uab.edu)</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
                 </div>
               </div>
 
               {/* Partner 2: Dr. PMRIMS India */}
-              <div className="p-6 sm:p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-400/30 text-xs font-bold uppercase tracking-wider">
-                    Indian Partner Institution
-                  </span>
-                  <span className="text-xs font-mono text-slate-400">Chevella, Hyderabad, India</span>
+              <div className="p-6 sm:p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-400/30 text-xs font-bold uppercase tracking-wider">
+                      Indian Partner Institution
+                    </span>
+                    <span className="text-xs font-mono text-slate-400">Chevella, Hyderabad, India</span>
+                  </div>
+
+                  {/* Dr. PMRIMS Logo */}
+                  <div className="bg-white/95 rounded-2xl px-4 py-2.5 mb-5 inline-flex items-center gap-2.5 shadow-md">
+                    <Image
+                      src="/images/pmrims_logo.png"
+                      alt="Dr. PMRIMS Official Logo"
+                      width={44}
+                      height={44}
+                      className="h-10 sm:h-12 w-auto object-contain"
+                    />
+                    <span className="font-sans font-black text-xl text-red-600 leading-none">
+                      PMRIMS
+                    </span>
+                  </div>
+
+                  <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white mb-2">
+                    Dr. Patnam Mahender Reddy Institute of Medical Sciences
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-300 font-technical leading-relaxed mb-4">
+                    A leading National Medical Commission (NMC) recognized and KNRUHS affiliated medical institute featuring a 1200+ bed teaching hospital, 250 MBBS seats, 94 MD/MS postgraduate seats, and research laboratories.
+                  </p>
+                  <div className="space-y-1.5 text-xs text-blue-200">
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
+                      <span>NMC Recognized Academic Medical Campus</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
+                      <span>CDSCO &amp; DHR Registered Institutional Ethics Committee</span>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white mb-2">
-                  Dr. Patnam Mahender Reddy Institute of Medical Sciences
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-300 font-technical leading-relaxed mb-4">
-                  A leading National Medical Commission (NMC) recognized and KNRUHS affiliated medical institute featuring a 1200+ bed teaching hospital, 250 MBBS seats, 94 MD/MS postgraduate seats, and research laboratories.
-                </p>
-                <div className="space-y-1.5 text-xs text-blue-200">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
-                    <span>NMC Recognized Academic Medical Campus</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
-                    <span>CDSCO &amp; DHR Registered Institutional Ethics Committee</span>
-                  </div>
+
+                <div className="mt-6 pt-4 border-t border-white/10">
+                  <Link
+                    href="/about"
+                    className="inline-flex items-center gap-2 text-xs font-bold text-blue-300 hover:text-white transition-colors"
+                  >
+                    <span>About Dr. PMRIMS Campus</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </Link>
                 </div>
               </div>
 
@@ -159,17 +203,17 @@ export default function CollaborationsPage() {
             {/* Quick Summary Strip */}
             <div className="mt-8 pt-8 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs font-semibold text-slate-300">
               <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-gold-brand" />
-                <span>Signed: November 2026 | Effective Term: 5 Years (Renewable)</span>
+                <Globe2 className="w-4 h-4 text-gold-brand" />
+                <span>Bilateral Academic, Educational &amp; Research Affiliation</span>
               </div>
               <div className="flex items-center gap-3">
                 <a
-                  href="/documents/collaborations/UAB-PMRIMS-International-MOU-2026.pdf"
+                  href="https://www.uab.edu/home/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-2.5 rounded-xl bg-gold-brand hover:bg-gold-muted text-sriher-navy font-extrabold transition-all shadow-lg shadow-gold-brand/20 flex items-center gap-2 active:scale-95"
+                  className="px-5 py-2.5 rounded-xl bg-gold-brand hover:bg-gold-muted text-sriher-navy font-extrabold transition-all shadow-lg shadow-gold-brand/20 flex items-center gap-2 active:scale-95 text-xs uppercase tracking-wider"
                 >
-                  <ExternalLink className="w-4 h-4 text-sriher-navy" /> View Official Signed MOU (PDF)
+                  <ExternalLink className="w-4 h-4 text-sriher-navy" /> Visit Official UAB Website (uab.edu)
                 </a>
               </div>
             </div>
@@ -221,57 +265,48 @@ export default function CollaborationsPage() {
           </div>
         </div>
 
-        {/* Official Signed Document Download Section */}
+        {/* Official UAB Website Highlight Card */}
         <div className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-institutional mb-12">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-slate-200 pb-6 mb-6">
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <FileText className="w-5 h-5 text-blue-600" />
-                <h3 className="text-xl font-serif font-bold text-slate-900">
-                  Official Institutional Memorandum of Understanding Document
-                </h3>
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-5">
+              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-3 shrink-0 flex items-center justify-center">
+                <Image
+                  src="/images/collaborations/uab_logo.svg"
+                  alt="UAB Official Logo"
+                  width={140}
+                  height={58}
+                  className="h-10 w-auto object-contain"
+                />
               </div>
-              <p className="text-xs sm:text-sm text-slate-600 font-technical">
-                Original digitized 4-page master agreement executed between The Board of Trustees of the University of Alabama (UAB) and Dr. PMRIMS.
-              </p>
+              <div>
+                <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-blue-700">
+                  Official Institutional Portal
+                </span>
+                <h3 className="text-xl sm:text-2xl font-serif font-bold text-slate-900 mt-0.5">
+                  The University of Alabama at Birmingham (UAB)
+                </h3>
+                <a
+                  href="https://www.uab.edu/home/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-semibold text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1.5 mt-1 font-mono group"
+                >
+                  <span>https://www.uab.edu/home/</span>
+                  <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                </a>
+              </div>
             </div>
 
-            <div className="flex items-center gap-3 shrink-0">
+            <div className="shrink-0">
               <a
-                href="/documents/collaborations/UAB-PMRIMS-International-MOU-2026.pdf"
+                href="https://www.uab.edu/home/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-5 py-2.5 rounded-xl bg-white hover:bg-slate-100 text-slate-800 text-xs font-bold border border-slate-300 transition-colors flex items-center gap-2 shadow-sm"
+                className="px-6 py-3.5 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 active:scale-95 uppercase tracking-wider"
               >
-                <ExternalLink className="w-4 h-4 text-blue-600" /> View Document
+                <span>Visit Official Website (uab.edu)</span>
+                <ExternalLink className="w-4 h-4" />
               </a>
-              <a
-                href="/documents/collaborations/UAB-PMRIMS-International-MOU-2026.pdf"
-                download
-                className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-md transition-colors flex items-center gap-2"
-              >
-                <Download className="w-4 h-4" /> Download PDF (240 KB)
-              </a>
-            </div>
-          </div>
-
-          {/* Verification & Metadata Matrix */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-technical">
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
-              <div className="text-[10px] font-bold uppercase text-slate-400 mb-1">Agreement Reference</div>
-              <div className="font-bold text-slate-900">UAB Contract # 283648</div>
-            </div>
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
-              <div className="text-[10px] font-bold uppercase text-slate-400 mb-1">Effective Validity</div>
-              <div className="font-bold text-slate-900">5-Year Renewable Term (2026–2031)</div>
-            </div>
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
-              <div className="text-[10px] font-bold uppercase text-slate-400 mb-1">UAB Signatory</div>
-              <div className="font-bold text-slate-900">Amy Ellis, Asst. VP &amp; Controller</div>
-            </div>
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
-              <div className="text-[10px] font-bold uppercase text-slate-400 mb-1">PMRIMS Signatory</div>
-              <div className="font-bold text-slate-900">P V Nagesh Babu, General Manager</div>
             </div>
           </div>
         </div>
@@ -283,12 +318,6 @@ export default function CollaborationsPage() {
             className="text-xs font-bold text-slate-600 hover:text-slate-900 flex items-center gap-1.5"
           >
             <ArrowLeft className="w-4 h-4" /> Back to Home
-          </Link>
-          <Link
-            href="/research"
-            className="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1.5"
-          >
-            View Research &amp; Ethics Committee →
           </Link>
         </div>
 
