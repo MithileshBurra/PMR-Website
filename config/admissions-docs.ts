@@ -164,22 +164,22 @@ export const ADMISSIONS_CONFIG = {
 
   // 3. POSTGRADUATE (MD / MS) SPECIALIZATIONS & SEATS (94 SEATS TOTAL)
   pgSpecializationsMS: [
-    { name: "MS – General Surgery", seats: 6, duration: "3 Years", category: "Surgical" },
     { name: "MS – Obstetrics & Gynaecology", seats: 8, duration: "3 Years", category: "Surgical" },
+    { name: "MS – Otorhinolaryngology (ENT)", seats: 5, duration: "3 Years", category: "Surgical" },
+    { name: "MS – General Surgery", seats: 6, duration: "3 Years", category: "Surgical" },
     { name: "MS – Orthopaedics", seats: 7, duration: "3 Years", category: "Surgical" },
     { name: "MS – Ophthalmology", seats: 7, duration: "3 Years", category: "Surgical" },
-    { name: "MS – Otorhinolaryngology", seats: 5, duration: "3 Years", category: "Surgical" },
   ],
   pgSpecializationsMD: [
-    { name: "MD – General Medicine", seats: 13, duration: "3 Years", category: "Clinical" },
-    { name: "MD – Paediatrics", seats: 8, duration: "3 Years", category: "Clinical" },
-    { name: "MD – Radio-Diagnosis", seats: 5, duration: "3 Years", category: "Clinical" },
-    { name: "MD – Anaesthesiology", seats: 11, duration: "3 Years", category: "Clinical" },
-    { name: "MD – Dermatology Venereology & Leprosy", seats: 7, duration: "3 Years", category: "Clinical" },
-    { name: "MD – Psychiatry", seats: 4, duration: "3 Years", category: "Clinical" },
-    { name: "MD – Respiratory Medicine", seats: 3, duration: "3 Years", category: "Clinical" },
-    { name: "MD – Pathology", seats: 4, duration: "3 Years", category: "Para-Clinical" },
+    { name: "MD – Radio-Diagnosis / Radiology", seats: 5, duration: "3 Years", category: "Clinical" },
     { name: "MD – Microbiology", seats: 4, duration: "3 Years", category: "Para-Clinical" },
+    { name: "MD – Paediatrics", seats: 8, duration: "3 Years", category: "Clinical" },
+    { name: "MD – General Medicine", seats: 13, duration: "3 Years", category: "Clinical" },
+    { name: "MD – Anaesthesiology", seats: 11, duration: "3 Years", category: "Clinical" },
+    { name: "MD – Pathology", seats: 4, duration: "3 Years", category: "Para-Clinical" },
+    { name: "MD – Dermatology, Venereology & Leprosy (DVL)", seats: 7, duration: "3 Years", category: "Clinical" },
+    { name: "MD – Respiratory Medicine / Pulmonary Medicine", seats: 3, duration: "3 Years", category: "Clinical" },
+    { name: "MD – Psychiatry", seats: 4, duration: "3 Years", category: "Clinical" },
     { name: "MD – Biochemistry", seats: 2, duration: "3 Years", category: "Pre-Clinical" },
   ],
 
