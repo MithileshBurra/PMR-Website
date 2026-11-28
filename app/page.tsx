@@ -226,7 +226,7 @@ export default function Home() {
               </h2>
               
               <p className="text-slate-200 text-xs sm:text-sm font-technical mt-2.5 leading-relaxed">
-                Formal 5-year bilateral agreement fostering joint medical research, student clinical electives, faculty academic exchange, and international scientific symposia between UAB, USA and Dr. PMRIMS.
+                Formal bilateral agreement fostering joint medical research, student clinical electives, faculty academic exchange, and international scientific symposia between UAB, USA and Dr. PMRIMS.
               </p>
               
               <div className="flex flex-wrap items-center gap-4 sm:gap-6 mt-4 text-xs font-semibold text-slate-100">
